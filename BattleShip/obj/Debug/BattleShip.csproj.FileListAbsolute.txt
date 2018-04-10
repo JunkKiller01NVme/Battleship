@@ -1,0 +1,7 @@
+C:\Users\dixonzac000.ALPINE\source\repos\BattleShip\BattleShip\obj\Debug\BattleShip.csprojResolveAssemblyReference.cache
+C:\Users\dixonzac000.ALPINE\source\repos\BattleShip\BattleShip\obj\Debug\BattleShip.csproj.CoreCompileInputs.cache
+C:\Users\dixonzac000.ALPINE\source\repos\BattleShip\BattleShip\bin\Debug\BattleShip.exe.config
+C:\Users\dixonzac000.ALPINE\source\repos\BattleShip\BattleShip\bin\Debug\BattleShip.exe
+C:\Users\dixonzac000.ALPINE\source\repos\BattleShip\BattleShip\bin\Debug\BattleShip.pdb
+C:\Users\dixonzac000.ALPINE\source\repos\BattleShip\BattleShip\obj\Debug\BattleShip.exe
+C:\Users\dixonzac000.ALPINE\source\repos\BattleShip\BattleShip\obj\Debug\BattleShip.pdb
