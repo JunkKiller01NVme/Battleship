@@ -1,0 +1,7 @@
+C:\Users\larsorob001\Documents\Visual Studio 2017\Projects\Battleship menu assistant\Battleship menu assistant\bin\Debug\Battleship menu assistant.exe.config
+C:\Users\larsorob001\Documents\Visual Studio 2017\Projects\Battleship menu assistant\Battleship menu assistant\bin\Debug\Battleship menu assistant.exe
+C:\Users\larsorob001\Documents\Visual Studio 2017\Projects\Battleship menu assistant\Battleship menu assistant\bin\Debug\Battleship menu assistant.pdb
+C:\Users\larsorob001\Documents\Visual Studio 2017\Projects\Battleship menu assistant\Battleship menu assistant\obj\Debug\Battleship menu assistant.csprojResolveAssemblyReference.cache
+C:\Users\larsorob001\Documents\Visual Studio 2017\Projects\Battleship menu assistant\Battleship menu assistant\obj\Debug\Battleship menu assistant.csproj.CoreCompileInputs.cache
+C:\Users\larsorob001\Documents\Visual Studio 2017\Projects\Battleship menu assistant\Battleship menu assistant\obj\Debug\Battleship menu assistant.exe
+C:\Users\larsorob001\Documents\Visual Studio 2017\Projects\Battleship menu assistant\Battleship menu assistant\obj\Debug\Battleship menu assistant.pdb
