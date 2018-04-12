@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattleShip.cs" />
     <Compile Include="Boat.cs" />
     <Compile Include="Carrier.cs" />
     <Compile Include="Destroyer.cs" />
