@@ -11,28 +11,30 @@ namespace BattleShip
     {
 
         public string playerName = "";
-        public
+        public int timesShot = 0;
 
-
-
-        BattleShip() {
+        public BattleShip()
+        {
 
 
         }
 
-        public void Run() {
+        public void Run()
+        {
             //start the menu
-            //Menu();
+            Menu();
             //make the board
             //PlayingBoard();
+            //starts shoots
+            Shootsthings(0, 0);
             //place the ships 
             //PlaceShips();
             // start the game
-           // Start();
+            // Start();
         }
 
-
-        public void Menu() {
+        public void Menu()
+        {
             while (true)
             {
                 WriteLine("Welcome to B A T T L E S H I P!!!!!");
@@ -48,14 +50,28 @@ namespace BattleShip
                     if (result == 1)
                     {
                         // Instructions
-                        break;
+                        Write("To shoot. enter the 'X' value first, hit enter; then enter the 'Y' value.");
+                        Write("Back to the menu? (y/n)");
+
+                        if (ReadLine() == "y")
+                        {
+
+                            continue;
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                     else if (result == 2)
                     {
                         // New game
 
-
+                        Placeships();
                         PlayingBoard();
+
+
+
 
 
 
@@ -69,6 +85,7 @@ namespace BattleShip
                     else if (result == 4)
                     {
                         // debugging mode
+                        PlayingBoard();
                         break;
                     }
                     else
@@ -79,73 +96,105 @@ namespace BattleShip
                     }
                 }
             }
-            // Your code goes above here
-            WriteLine("Press any key to exit.");
-            ReadKey();
+
+
         }
 
-
-
-
-
-
-
-
-        public void PlayingBoard() {
-           
-        }
-        
-            
-        
-
-           
-
-       static string CellToString(Cell c)
+        static string CellToString(Cell c)
+        {
+            switch (c)
             {
-                switch (c)
-                {
-                    case Cell.Water: return "_";
-                    case Cell.LiveBoat: return "O";
-                    case Cell.HitBoat: return "*";
-                    case Cell.SunkBoat: return "X";
-                    default: return "?";
-                }
+                case Cell.Water: return "_";
+                case Cell.LiveBoat: return "O";
+                case Cell.HitBoat: return "*";
+                case Cell.SunkBoat: return "X";
+                default: return "?";
             }
-        
-        
-             public enum Cell { Water, LiveBoat, HitBoat, SunkBoat };
-        string BoardToString(Cell[,] board)
-            {
-                StringBuilder sb = new StringBuilder();
+        }
 
-                // Column labels
-                sb.Append("  ");
-                for (int i = 1; i <= 10; i++)
+
+        public enum Cell { Water, LiveBoat, HitBoat, SunkBoat };
+
+        string BoardToString(Cell[,] board)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            // Column labels
+            sb.Append("  ");
+            for (int i = 1; i <= 10; i++)
+            {
+                sb.Append(i + " ");
+            }
+            sb.AppendLine();
+
+            // Rows
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                char rowLabel = (char)('A' + i);
+                sb.Append(rowLabel + " ");
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    sb.Append(i + " ");
+                    Cell c = board[i, j];
+                    sb.Append(CellToString(c) + " ");
                 }
                 sb.AppendLine();
-
-                // Rows
-                for (int i = 0; i < board.GetLength(0); i++)
-                {
-                    char rowLabel = (char)('A' + i);
-                    sb.Append(rowLabel + " ");
-                    for (int j = 0; j < board.GetLength(1); j++)
-                    {
-                        Cell c = board[i, j];
-                        sb.Append(CellToString(c) + " ");
-                    }
-                    sb.AppendLine();
-                }
-                return sb.ToString();
             }
-            Cell[,] SeaArray = new Cell[10, 10];
+            return sb.ToString();
 
         }
 
+
+
+        //Makes the Sea board print to the screen
+        public void PlayingBoard()
+        {
+            Cell[,] SeaArray = new Cell[10, 10];
+            WriteLine(BoardToString(SeaArray));
+            Placeships();
+
+        }
+        //this methods job is to place the ships... problem is that we cant figure out how to use mcculloughs code to our advantage.
+        public void Placeships()
+        {
+            Random rnd = new Random();
+            int xax = rnd.Next(0, 11);
+            Random rmd = new Random();
+            int yax = rmd.Next(0, 11);
+
+            // Cell[,] SeaArray = new Cell[10, 10];
+
+            SpeedBoat speedBoat = new SpeedBoat(4, 4);
+
+
+
+        }
+
+        // This method takes in two inputs and relates them to the board.
+        public void Shootsthings(int x, int y)
+        {
+            Write("Ok you are now ready to shoot at your opponent. Remember: X first, enter, and then Y.");
+            WriteLine();
+            x = Int32.Parse(ReadLine());
+            y = Int32.Parse(ReadLine());
+
+
+
+            if (x == y) { }
+
+            this.timesShot++;
+        }
+
+
+        public void YouWin()
+        {
+            Clear();
+            WriteLine("You Win!!! You took " + timesShot + " shots to win!.");
+
+        }
+
+
     }
-    
+
 
 }
 
