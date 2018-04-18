@@ -68,8 +68,8 @@ namespace BattleShip
         {
             this.xAxis = x;
             this.yAxis = y;
-            Cell[,] SeaArray = new Cell[10, 10];
-            SeaArray[xAxis, yAxis] = Cell.LiveBoat;
+            
+            //SeaArray[xAxis, yAxis] = Cell.LiveBoat;
 
 
         }

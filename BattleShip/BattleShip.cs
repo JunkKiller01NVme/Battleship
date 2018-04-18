@@ -12,7 +12,9 @@ namespace BattleShip
 
         public string playerName = "";
         public int timesShot = 0;
-
+        public Cell[,] SeaArray;
+        public SpeedBoat Sb;
+        
         public BattleShip()
         {
 
@@ -148,9 +150,9 @@ namespace BattleShip
         //Makes the Sea board print to the screen
         public void PlayingBoard()
         {
-            Cell[,] SeaArray = new Cell[10, 10];
+            SeaArray = new Cell[10, 10];
             WriteLine(BoardToString(SeaArray));
-            Placeships();
+           
 
         }
         //this methods job is to place the ships... problem is that we cant figure out how to use mcculloughs code to our advantage.
@@ -161,10 +163,12 @@ namespace BattleShip
             Random rmd = new Random();
             int yax = rmd.Next(0, 11);
 
+            
+            
             // Cell[,] SeaArray = new Cell[10, 10];
 
-            SpeedBoat speedBoat = new SpeedBoat(4, 4);
-
+            //SpeedBoat speedBoat = new SpeedBoat(4, 4);
+            //this.SeaArray[speedBoat.xAxis, speedBoat.yAxis] = Cell.LiveBoat;
 
 
         }
@@ -183,7 +187,6 @@ namespace BattleShip
 
             this.timesShot++;
         }
-
 
         public void YouWin()
         {
