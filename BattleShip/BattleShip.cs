@@ -150,7 +150,7 @@ namespace BattleShip
         //Makes the Sea board print to the screen
         public void PlayingBoard()
         {
-            SeaArray = new Cell[10, 10];
+            Clear();
             WriteLine(BoardToString(SeaArray));
            
 
@@ -167,10 +167,10 @@ namespace BattleShip
 
             // Cell[,] SeaArray = new Cell[10, 10];
 
-            SpeedBoat speedBoat = new SpeedBoat(4, 4);
-            SeaArray[speedBoat.xAxis, speedBoat.yAxis] = Cell.LiveBoat;
-            //WriteLine(String.Join("\n", Enumerable.Range(0, SeaArray.GetLength(0)).Select(i => String.Join(", ", Enumerable.Range(0, SeaArray.GetLength(1)).Select(j => SeaArray[i, j]))))); #### NO TOUCH #### E V E R ####
-
+            SpeedBoat speedBoat = new SpeedBoat(xax, yax);
+            //SeaArray[speedBoat.xAxis-1, speedBoat.yAxis-1] = Cell.LiveBoat;
+           // WriteLine(String.Join("\n", Enumerable.Range(0, SeaArray.GetLength(0)).Select(i => String.Join(", ", Enumerable.Range(0, SeaArray.GetLength(1)).Select(j => SeaArray[i, j]))))); //#### NO TOUCH #### E V E R ####
+            PlayingBoard();
         }
 
         // This method takes in two inputs and relates them to the board.
