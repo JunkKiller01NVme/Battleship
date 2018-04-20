@@ -11,64 +11,11 @@ namespace BattleShip
 
 
 
-        static string CellToString(Cell c)
-        {
-            switch (c)
-            {
-                case Cell.Water: return "_";
-                case Cell.LiveBoat: return "O";
-                case Cell.HitBoat: return "*";
-                case Cell.SunkBoat: return "X";
-                default: return "?";
-            }
-        }
-
-
-         enum Cell { Water, LiveBoat, HitBoat, SunkBoat };
-
-        string BoardToString(Cell[,] board)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            // Column labels
-            sb.Append("  ");
-            for (int i = 1; i <= 10; i++)
-            {
-                sb.Append(i + " ");
-            }
-            sb.AppendLine();
-
-            // Rows
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                char rowLabel = (char)('A' + i);
-                sb.Append(rowLabel + " ");
-                for (int j = 0; j < board.GetLength(1); j++)
-                {
-                    Cell c = board[i, j];
-                    sb.Append(CellToString(c) + " ");
-                }
-                sb.AppendLine();
-            }
-            return sb.ToString();
-
-        }
-
-        static void CellLive(int x, int y)
-        {
-            b.SeaArray[x, y] = BattleShip.Cell.LiveBoat;
-        }
-
-        static void PlaceSpeedBoat()
-        {
-            SpeedBoat speedBoat = new SpeedBoat(4, 4);
-            CellLive(speedBoat.xAxis, speedBoat.yAxis);
-        }
-        public static BattleShip b = new BattleShip();
+       
 
         static void Main(string[] args)
         {
-            //BattleShip b = new BattleShip();
+           BattleShip b = new BattleShip();
             
             b.Run();
             
@@ -80,8 +27,11 @@ namespace BattleShip
             //Cell[,] SeaArray = new Cell[10, 10];
             //Console.WriteLine(BoardToString(SeaArray));
             //SeaArray[1, 2] = Cell.LiveBoat;
+            
 
-
+            Console.WriteLine();
+            
+            
 
 
             //Console.WriteLine(BoardToString(SeaArray));

@@ -15,7 +15,7 @@ namespace BattleShip
         public int yAxis = 4;
         public bool vertical;
         public bool fliped;
-
+        
 
 
 
@@ -32,7 +32,7 @@ namespace BattleShip
 
         }
 
-
+       
 
 
     }
