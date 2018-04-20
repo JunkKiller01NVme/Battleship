@@ -17,7 +17,7 @@ namespace BattleShip
         
         public BattleShip()
         {
-
+            SeaArray = new Cell[10, 10];
 
         }
 
@@ -163,13 +163,13 @@ namespace BattleShip
             Random rmd = new Random();
             int yax = rmd.Next(0, 11);
 
-            
-            
+
+
             // Cell[,] SeaArray = new Cell[10, 10];
 
-            //SpeedBoat speedBoat = new SpeedBoat(4, 4);
-            //this.SeaArray[speedBoat.xAxis, speedBoat.yAxis] = Cell.LiveBoat;
-
+            SpeedBoat speedBoat = new SpeedBoat(4, 4);
+            SeaArray[speedBoat.xAxis, speedBoat.yAxis] = Cell.LiveBoat;
+            //WriteLine(String.Join("\n", Enumerable.Range(0, SeaArray.GetLength(0)).Select(i => String.Join(", ", Enumerable.Range(0, SeaArray.GetLength(1)).Select(j => SeaArray[i, j]))))); #### NO TOUCH #### E V E R ####
 
         }
 

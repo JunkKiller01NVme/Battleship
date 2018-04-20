@@ -19,49 +19,50 @@ namespace BattleShip
 
 
 
-        static string CellToString(Cell c)
-        {
-            switch (c)
-            {
-                case Cell.Water: return "_";
-                case Cell.LiveBoat: return "O";
-                case Cell.HitBoat: return "*";
-                case Cell.SunkBoat: return "X";
-                default: return "?";
-            }
-        }
         // trash code
-        #region
-        public enum Cell { Water, LiveBoat, HitBoat, SunkBoat };
+        //#region
+        //static string CellToString(Cell c)
+        //{
+        //    switch (c)
+        //    {
+        //        case Cell.Water: return "_";
+        //        case Cell.LiveBoat: return "O";
+        //        case Cell.HitBoat: return "*";
+        //        case Cell.SunkBoat: return "X";
+        //        default: return "?";
+        //    }
+        //}
 
-        string BoardToString(Cell[,] board)
-        {
-            StringBuilder sb = new StringBuilder();
+        //public enum Cell { Water, LiveBoat, HitBoat, SunkBoat };
 
-            // Column labels
-            sb.Append("  ");
-            for (int i = 1; i <= 10; i++)
-            {
-                sb.Append(i + " ");
-            }
-            sb.AppendLine();
+        //string BoardToString(Cell[,] board)
+        //{
+        //    StringBuilder sb = new StringBuilder();
 
-            // Rows
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                char rowLabel = (char)('A' + i);
-                sb.Append(rowLabel + " ");
-                for (int j = 0; j < board.GetLength(1); j++)
-                {
-                    Cell c = board[i, j];
-                    sb.Append(CellToString(c) + " ");
-                }
-                sb.AppendLine();
-            }
-            return sb.ToString();
+        //    // Column labels
+        //    sb.Append("  ");
+        //    for (int i = 1; i <= 10; i++)
+        //    {
+        //        sb.Append(i + " ");
+        //    }
+        //    sb.AppendLine();
 
-        }
-        #endregion
+        //    // Rows
+        //    for (int i = 0; i < board.GetLength(0); i++)
+        //    {
+        //        char rowLabel = (char)('A' + i);
+        //        sb.Append(rowLabel + " ");
+        //        for (int j = 0; j < board.GetLength(1); j++)
+        //        {
+        //            Cell c = board[i, j];
+        //            sb.Append(CellToString(c) + " ");
+        //        }
+        //        sb.AppendLine();
+        //    }
+        //    return sb.ToString();
+
+        //}
+        //#endregion
 
 
         public SpeedBoat(int x, int y)
