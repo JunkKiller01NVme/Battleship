@@ -167,10 +167,10 @@ namespace BattleShip
 
            
 
-            SpeedBoat speedBoat = new SpeedBoat(xax, yax);
+            SpeedBoat speedBoat = new SpeedBoat(yax,xax );
 
             
-            //SeaArray[speedBoat.xAxis-1, speedBoat.yAxis-1] = Cell.LiveBoat;
+            //SeaArray[speedBoat.xAxis, speedBoat.yAxis] = Cell.LiveBoat;
 
             Sb = speedBoat;
 
@@ -189,23 +189,28 @@ namespace BattleShip
             //The up most left piece of ship is the main piece.
             //Going off of the main peice I need to figure out if it has space to be placed horizontaly of verticly... If not randomize the main peice again
             //Or... Whenever the main peice is placed it determans if the rest of the ship can be placed. if not (again) it will try to flip it, or turn it. AAnnd if that doesnt work itll replace it.
-
-            if (SeaArray[Sb.xAxis + (Sb.size - 1), Sb.yAxis] == Cell.Water)
+            
+            if (SeaArray[ Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water && SeaArray[ Sb.yAxis, Sb.xAxis + Sb.size] == Cell.Water  )
             {
 
-                for (int i = 0; i <= Sb.size; i++)
+                for (int i = 1; i <= 2; i++)
                 {
-                    SeaArray[Sb.xAxis + 1, Sb.yAxis] = Cell.LiveBoat;
+                    SeaArray[ Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
+                
                 }
 
             }
-            else
+
+            else 
             {
-                for (int i = 0; i <= Sb.size; i++)
+                for (int i = 1; i <= 2; i++)
                 {
-                    SeaArray[Sb.xAxis - 1, Sb.yAxis] = Cell.LiveBoat;
+                    SeaArray[ Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
                 }
             }
+
+            
+
         }
 
         // This method takes in two inputs and relates them to the board.
