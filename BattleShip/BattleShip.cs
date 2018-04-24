@@ -216,16 +216,41 @@ namespace BattleShip
         // This method takes in two inputs and relates them to the board.
         public void Shootsthings(int x, int y)
         {
-            Write("Ok you are now ready to shoot at your opponent. Remember: X first, enter, and then Y.");
+            Write("Ok you are now ready to shoot at your opponent.");
             WriteLine();
-            x = Int32.Parse(ReadLine());
-            y = Int32.Parse(ReadLine());
+            int fireX = 0;
+            int fireY = 0;
+            while (true)
+            {
+                while (true)
+                {
+                    WriteLine("First the X (Numbers across top)");
+                    if (int.TryParse(ReadLine(), out int xx))
+                    {
+                        fireX = xx - 1;
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("Something didn't work, let's try that again.");
+                    }
+                }
+                while (true)
+                {
+                    if (char.TryParse(ReadLine(), out char yy))
+                    {
+                        fireY = LetterToRow(yy);
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("Something didn't work, let's try that again.");
+                    }
+                }
+                break;
+            }
+            timesShot++;
 
-
-
-            if (x == y) { }
-
-            this.timesShot++;
         }
 
         public void YouWin()
