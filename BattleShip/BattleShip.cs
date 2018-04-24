@@ -253,6 +253,16 @@ namespace BattleShip
 
         }
 
+        public int LetterToRow(char input)
+        {
+            return Char.ToUpper(input) - 'A';
+            switch (Char.ToUpper(input))
+            {
+                case 'A': return 0;
+                case 'B': return 1;
+
+            }
+        }
         public void YouWin()
         {
             Clear();
