@@ -168,18 +168,20 @@ namespace BattleShip
            
 
             SpeedBoat speedBoat = new SpeedBoat(xax, yax);
-            SeaArray[speedBoat.xAxis-1, speedBoat.yAxis-1] = Cell.LiveBoat;
+
+            
+            //SeaArray[speedBoat.xAxis-1, speedBoat.yAxis-1] = Cell.LiveBoat;
 
             Sb = speedBoat;
 
-            
 
 
-           // WriteLine(String.Join("\n", Enumerable.Range(0, SeaArray.GetLength(0)).Select(i => String.Join(", ", Enumerable.Range(0, SeaArray.GetLength(1)).Select(j => SeaArray[i, j]))))); //#### NO TOUCH #### E V E R ####
+
+            // WriteLine(String.Join("\n", Enumerable.Range(0, SeaArray.GetLength(0)).Select(i => String.Join(", ", Enumerable.Range(0, SeaArray.GetLength(1)).Select(j => SeaArray[i, j]))))); //#### NO TOUCH #### E V E R ####
             PlayingBoard();
             PlaceShipSegments();
         }
-        
+
         //This method will place the rest of the ship(s)
         public void PlaceShipSegments()
         {
@@ -188,19 +190,22 @@ namespace BattleShip
             //Going off of the main peice I need to figure out if it has space to be placed horizontaly of verticly... If not randomize the main peice again
             //Or... Whenever the main peice is placed it determans if the rest of the ship can be placed. if not (again) it will try to flip it, or turn it. AAnnd if that doesnt work itll replace it.
 
-            if (SeaArray[Sb.xAxis + 2, Sb.yAxis] == Cell.Water) {
+            if (SeaArray[Sb.xAxis + (Sb.size - 1), Sb.yAxis] == Cell.Water)
+            {
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i <= Sb.size; i++)
                 {
-                    SeaArray[Sb.xAxis+1,Sb.yAxis] = Cell.LiveBoat;
-                } 
-
+                    SeaArray[Sb.xAxis + 1, Sb.yAxis] = Cell.LiveBoat;
+                }
 
             }
-
-
-
-
+            else
+            {
+                for (int i = 0; i <= Sb.size; i++)
+                {
+                    SeaArray[Sb.xAxis - 1, Sb.yAxis] = Cell.LiveBoat;
+                }
+            }
         }
 
         // This method takes in two inputs and relates them to the board.
