@@ -159,15 +159,18 @@ namespace BattleShip
         public void Placeships()
         {
             Random rnd = new Random();
-            int xax = rnd.Next(0, 11);
+            int xax = rnd.Next(0, 10);
+
+
             Random rmd = new Random();
-            int yax = rmd.Next(0, 11);
+            int yax = rmd.Next(0, 10);
 
 
-
+            
+            
            
 
-            SpeedBoat speedBoat = new SpeedBoat(yax,xax );
+            SpeedBoat speedBoat = new SpeedBoat(xax,yax );
 
             
             //SeaArray[speedBoat.xAxis, speedBoat.yAxis] = Cell.LiveBoat;
@@ -189,25 +192,46 @@ namespace BattleShip
             //The up most left piece of ship is the main piece.
             //Going off of the main peice I need to figure out if it has space to be placed horizontaly of verticly... If not randomize the main peice again
             //Or... Whenever the main peice is placed it determans if the rest of the ship can be placed. if not (again) it will try to flip it, or turn it. AAnnd if that doesnt work itll replace it.
-            
-            if (SeaArray[ Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water && SeaArray[ Sb.yAxis, Sb.xAxis + Sb.size] == Cell.Water  )
+            if (!Sb.vertical)
             {
-
-                for (int i = 1; i <= 2; i++)
+                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water)
                 {
-                    SeaArray[ Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
-                
+
+                    for (int i = 0; i <= Sb.size - 1; i++)
+                    {
+                        SeaArray[Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
+
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
+                    }
+                }
+            }
+            else
+            {
+                if (SeaArray[Sb.yAxis + (Sb.size - 1), Sb.xAxis] == Cell.Water)
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis + i, Sb.xAxis] = Cell.LiveBoat;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis - i, Sb.xAxis] = Cell.LiveBoat;
+                    }
+
                 }
 
             }
-
-            else 
-            {
-                for (int i = 1; i <= 2; i++)
-                {
-                    SeaArray[ Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
-                }
-            }
+           
 
             
 
