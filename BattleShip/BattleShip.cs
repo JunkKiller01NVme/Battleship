@@ -110,12 +110,13 @@ namespace BattleShip
                 case Cell.LiveBoat: return "O";
                 case Cell.HitBoat: return "*";
                 case Cell.SunkBoat: return "X";
+                case Cell.Missed: return "@";
                 default: return "?";
             }
         }
 
 
-        public enum Cell { Water, LiveBoat, HitBoat, SunkBoat };
+        public enum Cell { Water, LiveBoat, HitBoat, SunkBoat, Missed };
 
         string BoardToString(Cell[,] board)
         {
@@ -192,6 +193,10 @@ namespace BattleShip
             //The up most left piece of ship is the main piece.
             //Going off of the main peice I need to figure out if it has space to be placed horizontaly of verticly... If not randomize the main peice again
             //Or... Whenever the main peice is placed it determans if the rest of the ship can be placed. if not (again) it will try to flip it, or turn it. AAnnd if that doesnt work itll replace it.
+            
+
+            //Speedboat
+            #region
             if (!Sb.vertical)
             {
                 if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water)
@@ -229,12 +234,30 @@ namespace BattleShip
                     }
 
                 }
-
+                
             }
-           
+            #endregion
 
+            //Sub  robs
+            #region
+
+
+            #endregion
+
+            //Destroyer.cs  me 
+            #region
+
+            #endregion
+
+
+            //Carrier   rob
+            #region
+            #endregion
+
+            //Boat    me
+            #region
+            #endregion
             
-
         }
 
         // This method takes in two inputs and relates them to the board.
