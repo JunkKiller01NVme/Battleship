@@ -273,8 +273,17 @@ namespace BattleShip
                 }
                 break;
             }
+            if (SeaArray[fireX,fireY] == Cell.LiveBoat)
+            {
+                SeaArray[fireX, fireY] = Cell.HitBoat;
+            }
+            else
+            {
+                Console.WriteLine("You missed!");
+            }
             timesShot++;
-
+            PlayingBoard();
+            Console.ReadKey();
         }
 
         public int LetterToRow(char input)

@@ -29,7 +29,7 @@ namespace BattleShip
 
 
             Random random = new Random();
-            int b = random.Next(1);
+            int b = random.Next(0,2);
 
             if (b == 0)
             {
