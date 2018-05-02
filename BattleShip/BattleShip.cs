@@ -14,6 +14,11 @@ namespace BattleShip
         public int timesShot = 0;
         public Cell[,] SeaArray;
         public SpeedBoat Sb;
+        public Sub sub;
+        public Destroyer des;
+        public Carrier car;
+        public Boat b;
+
         
         public BattleShip()
         {
@@ -159,31 +164,24 @@ namespace BattleShip
         //this methods job is to place the ships... problem is that we cant figure out how to use mcculloughs code to our advantage.
         public void Placeships()
         {
-            Random rnd = new Random();
-            int xax = rnd.Next(0, 10);
-
-
-            Random rmd = new Random();
-            int yax = rmd.Next(0, 10);
-
-
+            //Speedboat
+            #region
+            // Random rnd = new Random();
+            //int xax = rnd.Next(0, 10);
+            //Random rmd = new Random();
+            //int yax = rmd.Next(0, 10);
             
             
-           
-
-            SpeedBoat speedBoat = new SpeedBoat(xax,yax );
-
-            
-            //SeaArray[speedBoat.xAxis, speedBoat.yAxis] = Cell.LiveBoat;
-
-            Sb = speedBoat;
-
+                SpeedBoat speedBoat = new SpeedBoat(Yint(),Xint());
+                Sb = speedBoat;
+            #endregion
 
 
 
             // WriteLine(String.Join("\n", Enumerable.Range(0, SeaArray.GetLength(0)).Select(i => String.Join(", ", Enumerable.Range(0, SeaArray.GetLength(1)).Select(j => SeaArray[i, j]))))); //#### NO TOUCH #### E V E R ####
             PlayingBoard();
-            PlaceShipSegments();
+                PlaceShipSegments();
+            
         }
 
         //This method will place the rest of the ship(s)
@@ -199,7 +197,8 @@ namespace BattleShip
             #region
             if (!Sb.vertical)
             {
-                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water)
+                //Checks to see if the space next
+                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water )
                 {
 
                     for (int i = 0; i <= Sb.size - 1; i++)
@@ -240,7 +239,46 @@ namespace BattleShip
 
             //Sub  robs
             #region
+            if (!Sb.vertical)
+            {
+                //Checks to see if the space next
+                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water)
+                {
 
+                    for (int i = 0; i <= Sb.size - 1; i++)
+                    {
+                        SeaArray[Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
+
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
+                    }
+                }
+            }
+            else
+            {
+                if (SeaArray[Sb.yAxis + (Sb.size - 1), Sb.xAxis] == Cell.Water)
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis + i, Sb.xAxis] = Cell.LiveBoat;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis - i, Sb.xAxis] = Cell.LiveBoat;
+                    }
+
+                }
+
+            }
 
             #endregion
 
@@ -257,7 +295,7 @@ namespace BattleShip
             //Boat    me
             #region
             #endregion
-            
+
         }
 
         // This method takes in two inputs and relates them to the board.
@@ -326,9 +364,21 @@ namespace BattleShip
 
         }
 
+        public int Xint()
+        {
+            Random rnd = new Random();
+            int x = rnd.Next(0, 10);
+            
+            return x;
+        }
 
-
-        
+        public int Yint()
+        {
+            
+            Random random = new Random();
+            int y = random.Next(0, 10);
+            return  y;
+        }
 
 
     }

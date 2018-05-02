@@ -22,7 +22,19 @@ namespace BattleShip
             this.xAxis = x;
             this.yAxis = y;
 
+            Random random = new Random();
+            int b = random.Next(0, 2);
 
+            if (b == 0)
+            {
+                vertical = true;
+            }
+            else
+            {
+
+                vertical = false;
+
+            }
 
         }
 

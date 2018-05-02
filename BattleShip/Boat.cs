@@ -10,8 +10,8 @@ namespace BattleShip
     {
         public int numberOfCurrentHits;
         public int size = 3;
-        public int xAxis = 2;
-        public int yAxis = 5;
+        public int xAxis;
+        public int yAxis;
         public bool vertical;
         public bool fliped;
 
@@ -22,7 +22,19 @@ namespace BattleShip
             this.yAxis = y;
 
 
+            Random random = new Random();
+            int b = random.Next(0, 2);
 
+            if (b == 0)
+            {
+                vertical = true;
+            }
+            else
+            {
+
+                vertical = false;
+
+            }
         }
     }
 }
