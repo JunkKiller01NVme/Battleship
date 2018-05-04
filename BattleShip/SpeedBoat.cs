@@ -9,12 +9,10 @@ namespace BattleShip
     class SpeedBoat
     {
 
-        public int numberOfCurrentHits;
         public int size = 2;
         public int xAxis ;
         public int yAxis ;
         public bool vertical;
-        public bool fliped;
         
 
 
