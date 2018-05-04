@@ -39,7 +39,7 @@ namespace BattleShip
             // Console.WriteLine("Enter coordinates for shoots thing x first then y after you hit enter");
             // Console.ReadLine();
             // int shotx = int.Parse(Console.ReadLine());
-            Console.ReadLine();
+            Console.ReadKey();
             // int shoty = int.Parse(Console.ReadLine());
             // if (shot = Cell.LiveBoat) {
 

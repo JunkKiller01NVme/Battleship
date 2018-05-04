@@ -33,7 +33,7 @@ namespace BattleShip
             //make the board
             //PlayingBoard();
             //starts shoots
-            Shootsthings(0, 0);
+            Shootsthings();
             //place the ships 
             //PlaceShips();
             // start the game
@@ -197,7 +197,7 @@ namespace BattleShip
 
             //The up most left piece of ship is the main piece.
             //Going off of the main peice I need to figure out if it has space to be placed horizontaly of verticly... If not randomize the main peice again
-            //Or... Whenever the main peice is placed it determans if the rest of the ship can be placed. if not (again) it will try to flip it, or turn it. AAnnd if that doesnt work itll replace it.
+            //Or... Whenever the main peice is placed it determines if the rest of the ship can be placed. if not (again) it will try to flip it, or turn it. AAnnd if that doesnt work itll replace it.
             
 
             //Speedboat
@@ -312,52 +312,74 @@ namespace BattleShip
         }
 
         // This method takes in two inputs and relates them to the board.
-        public void Shootsthings(int x, int y)
+        public void Shootsthings()
         {
-            Write("Ok you are now ready to shoot at your opponent.");
-            WriteLine();
-            int fireX = 0;
-            int fireY = 0;
             while (true)
             {
+                PlayingBoard();
+                Write("Ok you are now ready to shoot at your opponent.");
+                WriteLine();
+                int fireX = 0;
+                int fireY = 0;
                 while (true)
                 {
-                    WriteLine("First the X (Numbers across top)");
-                    if (int.TryParse(ReadLine(), out int xx))
+                    while (true)
                     {
-                        fireX = xx - 1;
-                        break;
+                        WriteLine("First the numbers...");
+                        if (int.TryParse(ReadLine(), out int xx))
+                        {
+                            fireX = xx - 1;
+                            break;
+                        }
+                        else
+                        {
+                            WriteLine("Something didn't work, let's try that again.");
+                        }
                     }
-                    else
+                    while (true)
                     {
-                        WriteLine("Something didn't work, let's try that again.");
+                        WriteLine("Now the letters...");
+                        if (char.TryParse(ReadLine(), out char yy))
+                        {
+                            fireY = LetterToRow(yy);
+                            break;
+                        }
+                        else
+                        {
+                            WriteLine("Something didn't work, let's try that again.");
+                        }
                     }
+                    break;
                 }
-                while (true)
+                if (SeaArray[fireY, fireX] != Cell.Missed && SeaArray[fireY, fireX] != Cell.HitBoat)
                 {
-                    if (char.TryParse(ReadLine(), out char yy))
+                    timesShot++;
+                    if (SeaArray[fireY, fireX] == Cell.LiveBoat)
                     {
-                        fireY = LetterToRow(yy);
-                        break;
+                        SeaArray[fireY, fireX] = Cell.HitBoat;
                     }
+
                     else
                     {
-                        WriteLine("Something didn't work, let's try that again.");
+                        Console.WriteLine("You missed!");
+                        SeaArray[fireY, fireX] = Cell.Missed;
                     }
                 }
-                break;
+                else
+                {
+                    WriteLine("You have already fired there, try another spot.");
+                    Console.ReadKey();
+                }
+                
+                if (SeaArray.Cast<Cell>().Contains(Cell.LiveBoat))
+                {
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
             }
-            if (SeaArray[fireX,fireY] == Cell.LiveBoat)
-            {
-                SeaArray[fireX, fireY] = Cell.HitBoat;
-            }
-            else
-            {
-                Console.WriteLine("You missed!");
-            }
-            timesShot++;
-            PlayingBoard();
-            Console.ReadKey();
         }
 
         public int LetterToRow(char input)
