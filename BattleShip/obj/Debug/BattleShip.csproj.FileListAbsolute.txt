@@ -26,3 +26,10 @@ C:\Users\larsorob001\Source\Repos\Battleship\BattleShip\obj\Debug\BattleShip.csp
 C:\Users\larsorob001\Source\Repos\Battleship\BattleShip\obj\Debug\BattleShip.csproj.CoreCompileInputs.cache
 C:\Users\larsorob001\Source\Repos\Battleship\BattleShip\obj\Debug\BattleShip.exe
 C:\Users\larsorob001\Source\Repos\Battleship\BattleShip\obj\Debug\BattleShip.pdb
+C:\Users\larsorob001\Desktop\Battleship\BattleShip\bin\Debug\BattleShip.exe.config
+C:\Users\larsorob001\Desktop\Battleship\BattleShip\bin\Debug\BattleShip.exe
+C:\Users\larsorob001\Desktop\Battleship\BattleShip\bin\Debug\BattleShip.pdb
+C:\Users\larsorob001\Desktop\Battleship\BattleShip\obj\Debug\BattleShip.csprojResolveAssemblyReference.cache
+C:\Users\larsorob001\Desktop\Battleship\BattleShip\obj\Debug\BattleShip.csproj.CoreCompileInputs.cache
+C:\Users\larsorob001\Desktop\Battleship\BattleShip\obj\Debug\BattleShip.exe
+C:\Users\larsorob001\Desktop\Battleship\BattleShip\obj\Debug\BattleShip.pdb

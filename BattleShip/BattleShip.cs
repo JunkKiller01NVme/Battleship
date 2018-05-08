@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+using System.Net.Mail;
+using System.Net;
+
 
 namespace BattleShip
 {
@@ -49,7 +52,7 @@ namespace BattleShip
                 WriteLine("Enter 1 to see the instructions.");
                 WriteLine("Enter 2 to start a new game.");
                 WriteLine("Enter 3 to quit.");
-                WriteLine("Enter 4 to enter debug mode.");
+                WriteLine("Enter 4 to send a Bug Report");
                 string response = ReadLine();
 
                 if (int.TryParse(response, out int result))
@@ -92,7 +95,7 @@ namespace BattleShip
                     else if (result == 4)
                     {
                         // debugging mode
-                        PlayingBoard();
+                        //Email();
                         break;
                     }
                     else
@@ -402,7 +405,36 @@ namespace BattleShip
             return  y;
         }
 
+        #region
 
+
+        //static void Email()
+        //{
+        //    Console.WriteLine("Mail To");
+        //    MailAddress to = new MailAddress(Console.ReadLine());
+
+        //    Console.WriteLine("Mail From");
+        //    MailAddress from = new MailAddress(Console.ReadLine());
+
+        //    MailMessage mail = new MailMessage(from, to);
+
+        //    Console.WriteLine("Subject");
+        //    mail.Subject = Console.ReadLine();
+
+        //    Console.WriteLine("Your Message");
+        //    mail.Body = Console.ReadLine();
+
+        //    SmtpClient smtp = new SmtpClient();
+        //    smtp.Host = "smtp.gmail.com";
+        //    smtp.Port = 587;
+
+        //    smtp.Credentials = new NetworkCredential(
+        //        "borgpack1@gmail.com", "Amethyst64");
+        //    smtp.EnableSsl = true;
+        //    Console.WriteLine("Sending email...");
+        //    smtp.Send(mail);
+        //}
+        #endregion
     }
 
 
