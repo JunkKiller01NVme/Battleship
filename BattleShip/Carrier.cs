@@ -8,12 +8,10 @@ namespace BattleShip
 {
     class Carrier
     {
-        public int numberOfCurrentHits;
         public int size = 5;
         public int xAxis;
         public int yAxis;
         public bool vertical;
-        public bool fliped;
 
 
 

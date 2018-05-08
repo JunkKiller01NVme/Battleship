@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
-using System.Net.Mail;
-using System.Net;
-
 
 namespace BattleShip
 {
@@ -17,7 +14,7 @@ namespace BattleShip
         public int timesShot = 0;
         public Cell[,] SeaArray;
         public SpeedBoat Sb;
-        public Sub sub;
+        public Sub Sub;
         public Destroyer des;
         public Carrier car;
         public Boat b;
@@ -52,7 +49,7 @@ namespace BattleShip
                 WriteLine("Enter 1 to see the instructions.");
                 WriteLine("Enter 2 to start a new game.");
                 WriteLine("Enter 3 to quit.");
-                WriteLine("Enter 4 to send a Bug Report");
+                WriteLine("Enter 4 to enter debug mode.");
                 string response = ReadLine();
 
                 if (int.TryParse(response, out int result))
@@ -95,7 +92,7 @@ namespace BattleShip
                     else if (result == 4)
                     {
                         // debugging mode
-                        //Email();
+                        PlayingBoard();
                         break;
                     }
                     else
@@ -167,16 +164,23 @@ namespace BattleShip
         //this methods job is to place the ships... problem is that we cant figure out how to use mcculloughs code to our advantage.
         public void Placeships()
         {
-            //Speedboat
+            //All Ships
             #region
-            // Random rnd = new Random();
-            //int xax = rnd.Next(0, 10);
-            //Random rmd = new Random();
-            //int yax = rmd.Next(0, 10);
             
-            
-                SpeedBoat speedBoat = new SpeedBoat(Yint(),Xint());
-                Sb = speedBoat;
+            SpeedBoat speedBoat = new SpeedBoat(Yint(),Xint());
+            Sb = speedBoat;
+
+            Sub sub = new Sub(Yint(), Xint());
+            Sub = sub;
+
+            Destroyer destroyer = new Destroyer(Yint(), Xint());
+            des = destroyer;
+
+            Carrier carrier = new Carrier(Yint(), Xint());
+            car = carrier;
+
+            Boat boat = new Boat(Yint(), Xint());
+            b = boat;
             #endregion
 
 
@@ -198,7 +202,7 @@ namespace BattleShip
 
             //Speedboat
             #region
-            if (!Sb.vertical)
+            if (Sb.vertical)
             {
                 //Checks to see if the space next
                 if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water )
@@ -242,41 +246,47 @@ namespace BattleShip
 
             //Sub  robs
             #region
-            if (!Sb.vertical)
+            if (Sub.vertical)
             {
                 //Checks to see if the space next
-                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water)
+                if (SeaArray[Sub.yAxis, Sub.xAxis + (Sub.size - 1)] == Cell.Water && SeaArray[Sub.yAxis, Sub.xAxis + (Sub.size - 2)] == Cell.Water)
                 {
 
-                    for (int i = 0; i <= Sb.size - 1; i++)
+                    for (int i = 0; i <= Sub.size - 1; i++)
                     {
-                        SeaArray[Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
+                        SeaArray[Sub.yAxis, Sub.xAxis + i] = Cell.LiveBoat;
 
                     }
 
                 }
                 else
                 {
-                    for (int i = 0; i < Sb.size; i++)
+                    for (int i = 0; i < Sub.size; i++)
                     {
-                        SeaArray[Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
+                        if (SeaArray[Sub.yAxis, Sub.xAxis - (Sub.size - 1)] == Cell.Water)
+                        {
+                            SeaArray[Sub.yAxis, Sub.xAxis - i] = Cell.LiveBoat;
+                        }
+                        else {
+
+                        }
                     }
                 }
             }
             else
             {
-                if (SeaArray[Sb.yAxis + (Sb.size - 1), Sb.xAxis] == Cell.Water)
+                if (SeaArray[Sub.yAxis + (Sub.size - 1), Sub.xAxis] == Cell.Water && SeaArray[Sub.yAxis + (Sub.size - 2), Sub.xAxis ] == Cell.Water)
                 {
                     for (int i = 0; i < Sb.size; i++)
                     {
-                        SeaArray[Sb.yAxis + i, Sb.xAxis] = Cell.LiveBoat;
+                        SeaArray[Sub.yAxis + i, Sub.xAxis] = Cell.LiveBoat;
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < Sb.size; i++)
+                    for (int i = 0; i < Sub.size; i++)
                     {
-                        SeaArray[Sb.yAxis - i, Sb.xAxis] = Cell.LiveBoat;
+                        SeaArray[Sub.yAxis - i, Sub.xAxis] = Cell.LiveBoat;
                     }
 
                 }
@@ -285,7 +295,7 @@ namespace BattleShip
 
             #endregion
 
-            //Destroyer.cs  me 
+            //Destroyer  me 
             #region
 
             #endregion
@@ -388,7 +398,6 @@ namespace BattleShip
             WriteLine("You Win!!! You took " + timesShot + " shots to win!.");
 
         }
-
         public int Xint()
         {
             Random rnd = new Random();
@@ -396,7 +405,6 @@ namespace BattleShip
             
             return x;
         }
-
         public int Yint()
         {
             
@@ -405,36 +413,7 @@ namespace BattleShip
             return  y;
         }
 
-        #region
-
-
-        //static void Email()
-        //{
-        //    Console.WriteLine("Mail To");
-        //    MailAddress to = new MailAddress(Console.ReadLine());
-
-        //    Console.WriteLine("Mail From");
-        //    MailAddress from = new MailAddress(Console.ReadLine());
-
-        //    MailMessage mail = new MailMessage(from, to);
-
-        //    Console.WriteLine("Subject");
-        //    mail.Subject = Console.ReadLine();
-
-        //    Console.WriteLine("Your Message");
-        //    mail.Body = Console.ReadLine();
-
-        //    SmtpClient smtp = new SmtpClient();
-        //    smtp.Host = "smtp.gmail.com";
-        //    smtp.Port = 587;
-
-        //    smtp.Credentials = new NetworkCredential(
-        //        "borgpack1@gmail.com", "Amethyst64");
-        //    smtp.EnableSsl = true;
-        //    Console.WriteLine("Sending email...");
-        //    smtp.Send(mail);
-        //}
-        #endregion
+        //static int GetValueFromArray(int[] array, int index) { }
     }
 
 
