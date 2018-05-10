@@ -323,7 +323,7 @@ namespace BattleShip
             {
                 if (SeaArray[Sub.yAxis + (Sub.size - 1), Sub.xAxis] == Cell.Water && SeaArray[Sub.yAxis + (Sub.size - 2), Sub.xAxis ] == Cell.Water)
                 {
-                    for (int i = 0; i < Sb.size; i++)
+                    for (int i = 0; i < Sub.size; i++)
                     {
                         SeaArray[Sub.yAxis + i, Sub.xAxis] = Cell.LiveBoat;
                     }
