@@ -187,72 +187,122 @@ namespace BattleShip
 
             // WriteLine(String.Join("\n", Enumerable.Range(0, SeaArray.GetLength(0)).Select(i => String.Join(", ", Enumerable.Range(0, SeaArray.GetLength(1)).Select(j => SeaArray[i, j]))))); //#### NO TOUCH #### E V E R ####
             PlayingBoard();
-                PlaceShipSegments();
+            PlaceShipSegments();
             
         }
 
         //This method will place the rest of the ship(s)
         public void PlaceShipSegments()
         {
-
+          
             //The up most left piece of ship is the main piece.
             //Going off of the main peice I need to figure out if it has space to be placed horizontaly of verticly... If not randomize the main peice again
             //Or... Whenever the main peice is placed it determines if the rest of the ship can be placed. if not (again) it will try to flip it, or turn it. AAnnd if that doesnt work itll replace it.
-            
+
 
             //Speedboat
-            #region
-            if (Sb.vertical)
-            {
-                //Checks to see if the space next
-                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water )
-                {
+            //#region
+            //while (true)
+            //{
+            //    if (Sb.vertical)
+            //    {
+            //        if (Sb.xAxis + (Sb.size - 1) > 9)
+            //        {
+            //            Sb = new SpeedBoat(Yint(), Xint());
+            //        }
+            //        else
+            //        {
+            //            break;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (Sb.yAxis + (Sb.size -1) > 9)
+            //        {
+            //            Sb = new SpeedBoat(Yint(), Xint());
+            //        }
+            //        else
+            //        {
+            //            break;
+            //        }
+            //    }
+            //}
+            //if (Sb.vertical)
+            //{
+            //    //Checks to see if the space next
+            //    if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water )
+            //    {
 
-                    for (int i = 0; i <= Sb.size - 1; i++)
-                    {
-                        SeaArray[Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
+            //        for (int i = 0; i <= Sb.size - 1; i++)
+            //        {
+            //            SeaArray[Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
 
-                    }
+            //        }
 
-                }
-                else
-                {
-                    for (int i = 0; i < Sb.size; i++)
-                    {
-                        SeaArray[Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
-                    }
-                }
-            }
-            else
-            {
-                if (SeaArray[Sb.yAxis + (Sb.size - 1), Sb.xAxis] == Cell.Water)
-                {
-                    for (int i = 0; i < Sb.size; i++)
-                    {
-                        SeaArray[Sb.yAxis + i, Sb.xAxis] = Cell.LiveBoat;
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < Sb.size; i++)
-                    {
-                        SeaArray[Sb.yAxis - i, Sb.xAxis] = Cell.LiveBoat;
-                    }
+            //    }
+            //    else
+            //    {
+            //        for (int i = 0; i < Sb.size; i++)
+            //        {
+            //            SeaArray[Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    if (SeaArray[Sb.yAxis + (Sb.size - 1), Sb.xAxis] == Cell.Water)
+            //    {
+            //        for (int i = 0; i < Sb.size; i++)
+            //        {
+            //            SeaArray[Sb.yAxis + i, Sb.xAxis] = Cell.LiveBoat;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        for (int i = 0; i < Sb.size; i++)
+            //        {
+            //            SeaArray[Sb.yAxis - i, Sb.xAxis] = Cell.LiveBoat;
+            //        }
 
-                }
+            //    }
                 
-            }
-            #endregion
+            //}
+            //#endregion
 
             //Sub  robs
             #region
+            while (true)
+            {
+                if (Sub.vertical)
+                {
+                    if (Sub.xAxis + (Sub.size - 1) > 9)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    if (Sub.yAxis + (Sub.size - 1) > 9)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
             if (Sub.vertical)
             {
                 //Checks to see if the space next
                 if (SeaArray[Sub.yAxis, Sub.xAxis + (Sub.size - 1)] == Cell.Water && SeaArray[Sub.yAxis, Sub.xAxis + (Sub.size - 2)] == Cell.Water)
                 {
 
-                    for (int i = 0; i <= Sub.size - 1; i++)
+                    for (int i = 0; i < Sub.size; i++)
                     {
                         SeaArray[Sub.yAxis, Sub.xAxis + i] = Cell.LiveBoat;
 
@@ -263,13 +313,9 @@ namespace BattleShip
                 {
                     for (int i = 0; i < Sub.size; i++)
                     {
-                        if (SeaArray[Sub.yAxis, Sub.xAxis - (Sub.size - 1)] == Cell.Water && SeaArray[Sub.yAxis, Sub.xAxis - (Sub.size - 2)] == Cell.Water)
-                        {
+                        
                             SeaArray[Sub.yAxis, Sub.xAxis - i] = Cell.LiveBoat;
-                        }
-                        else {
-
-                        }
+                        
                     }
                 }
             }
