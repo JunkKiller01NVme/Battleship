@@ -345,16 +345,216 @@ namespace BattleShip
 
             //Destroyer  me 
             #region
+            while (true)
+            {
+                if (des.vertical)
+                {
+                    if (des.xAxis + (des.size - 1) > 9)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    if (des.yAxis + (des.size - 1) > 9)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            if (des.vertical)
+            {
+                //Checks to see if the space next
+                if (SeaArray[des.yAxis, des.xAxis + (des.size - 1)] == Cell.Water && SeaArray[des.yAxis, des.xAxis + (des.size - 2)] == Cell.Water)
+                {
 
+                    for (int i = 0; i < des.size; i++)
+                    {
+                        SeaArray[des.yAxis, des.xAxis + i] = Cell.LiveBoat;
+
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < des.size; i++)
+                    {
+
+                        SeaArray[des.yAxis, des.xAxis - i] = Cell.LiveBoat;
+
+                    }
+                }
+            }
+            else
+            {
+                if (SeaArray[des.yAxis + (des.size - 1), des.xAxis] == Cell.Water && SeaArray[des.yAxis + (des.size - 2), des.xAxis] == Cell.Water)
+                {
+                    for (int i = 0; i < des.size; i++)
+                    {
+                        SeaArray[des.yAxis + i, des.xAxis] = Cell.LiveBoat;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < des.size; i++)
+                    {
+                        SeaArray[des.yAxis - i, des.xAxis] = Cell.LiveBoat;
+                    }
+
+                }
+
+            }
             #endregion
 
 
             //Carrier   rob
             #region
+            while (true)
+            {
+                if (car.vertical)
+                {
+                    if (car.xAxis + (car.size - 1) > 9)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    if (car.yAxis + (car.size - 1) > 9)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            if (car.vertical)
+            {
+                //Checks to see if the space next
+                if (SeaArray[car.yAxis, car.xAxis + (car.size - 1)] == Cell.Water && SeaArray[car.yAxis, car.xAxis + (car.size - 2)] == Cell.Water && SeaArray[car.yAxis, car.xAxis + (car.size - 3)] == Cell.Water && SeaArray[car.yAxis, car.xAxis + (car.size - 4)] == Cell.Water)
+                {
+
+                    for (int i = 0; i < car.size; i++)
+                    {
+                        SeaArray[car.yAxis, car.xAxis + i] = Cell.LiveBoat;
+
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < car.size; i++)
+                    {
+
+                        SeaArray[car.yAxis, car.xAxis - i] = Cell.LiveBoat;
+
+                    }
+                }
+            }
+            else
+            {
+                if (SeaArray[car.yAxis + (car.size - 1), car.xAxis] == Cell.Water && SeaArray[car.yAxis + (car.size - 2), car.xAxis] == Cell.Water && SeaArray[car.yAxis + (car.size - 3), car.xAxis] == Cell.Water && SeaArray[car.yAxis + (car.size - 4), car.xAxis] == Cell.Water)
+                {
+                    for (int i = 0; i < car.size; i++)
+                    {
+                        SeaArray[car.yAxis + i, car.xAxis] = Cell.LiveBoat;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < car.size; i++)
+                    {
+                        SeaArray[car.yAxis - i, car.xAxis] = Cell.LiveBoat;
+                    }
+
+                }
+
+            }
             #endregion
 
             //Boat    me
             #region
+            while (true)
+            {
+                if (b.vertical)
+                {
+                    if (b.xAxis + (b.size - 1) > 9)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    if (b.yAxis + (b.size - 1) > 9)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            if (b.vertical)
+            {
+                //Checks to see if the space next
+                if (SeaArray[b.yAxis, b.xAxis + (b.size - 1)] == Cell.Water && SeaArray[b.yAxis, b.xAxis + (b.size - 2)] == Cell.Water && SeaArray[b.yAxis, b.xAxis + (b.size - 3)] == Cell.Water)
+                {
+
+                    for (int i = 0; i < b.size; i++)
+                    {
+                        SeaArray[b.yAxis, b.xAxis + i] = Cell.LiveBoat;
+
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < b.size; i++)
+                    {
+
+                        SeaArray[b.yAxis, b.xAxis - i] = Cell.LiveBoat;
+
+                    }
+                }
+            }
+            else
+            {
+                if (SeaArray[b.yAxis + (b.size - 1), b.xAxis] == Cell.Water && SeaArray[b.yAxis + (b.size - 2), b.xAxis] == Cell.Water && SeaArray[b.yAxis + (b.size - 3), b.xAxis] == Cell.Water)
+                {
+                    for (int i = 0; i < b.size; i++)
+                    {
+                        SeaArray[b.yAxis + i, b.xAxis] = Cell.LiveBoat;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < b.size; i++)
+                    {
+                        SeaArray[b.yAxis - i, b.xAxis] = Cell.LiveBoat;
+                    }
+
+                }
+
+            }
             #endregion
 
         }

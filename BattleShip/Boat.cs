@@ -8,7 +8,7 @@ namespace BattleShip
 {
     class Boat
     {
-        public int size = 3;
+        public int size = 4;
         public int xAxis;
         public int yAxis;
         public bool vertical;
