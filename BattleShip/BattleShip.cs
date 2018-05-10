@@ -19,11 +19,13 @@ namespace BattleShip
         public Carrier car;
         public Boat b;
 
+        public Random rand;
+
         
         public BattleShip()
         {
             SeaArray = new Cell[10, 10];
-
+            rand = new Random();
         }
 
         public void Run()
@@ -201,73 +203,73 @@ namespace BattleShip
 
 
             //Speedboat
-            //#region
-            //while (true)
-            //{
-            //    if (Sb.vertical)
-            //    {
-            //        if (Sb.xAxis + (Sb.size - 1) > 9)
-            //        {
-            //            Sb = new SpeedBoat(Yint(), Xint());
-            //        }
-            //        else
-            //        {
-            //            break;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (Sb.yAxis + (Sb.size -1) > 9)
-            //        {
-            //            Sb = new SpeedBoat(Yint(), Xint());
-            //        }
-            //        else
-            //        {
-            //            break;
-            //        }
-            //    }
-            //}
-            //if (Sb.vertical)
-            //{
-            //    //Checks to see if the space next
-            //    if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water )
-            //    {
+            #region
+            while (true)
+            {
+                if (Sb.vertical)
+                {
+                    if (Sb.xAxis + (Sb.size - 1) > 9)
+                    {
+                        Sb = new SpeedBoat(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    if (Sb.yAxis + (Sb.size -1) > 9)
+                    {
+                        Sb = new SpeedBoat(Yint(), Xint());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            if (Sb.vertical)
+            {
+                //Checks to see if the space next
+                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water )
+                {
 
-            //        for (int i = 0; i <= Sb.size - 1; i++)
-            //        {
-            //            SeaArray[Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
+                    for (int i = 0; i <= Sb.size - 1; i++)
+                    {
+                        SeaArray[Sb.yAxis, Sb.xAxis + i] = Cell.LiveBoat;
 
-            //        }
+                    }
 
-            //    }
-            //    else
-            //    {
-            //        for (int i = 0; i < Sb.size; i++)
-            //        {
-            //            SeaArray[Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    if (SeaArray[Sb.yAxis + (Sb.size - 1), Sb.xAxis] == Cell.Water)
-            //    {
-            //        for (int i = 0; i < Sb.size; i++)
-            //        {
-            //            SeaArray[Sb.yAxis + i, Sb.xAxis] = Cell.LiveBoat;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        for (int i = 0; i < Sb.size; i++)
-            //        {
-            //            SeaArray[Sb.yAxis - i, Sb.xAxis] = Cell.LiveBoat;
-            //        }
+                }
+                else
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis, Sb.xAxis - i] = Cell.LiveBoat;
+                    }
+                }
+            }
+            else
+            {
+                if (SeaArray[Sb.yAxis + (Sb.size - 1), Sb.xAxis] == Cell.Water)
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis + i, Sb.xAxis] = Cell.LiveBoat;
+                   }
+                }
+                else
+                {
+                    for (int i = 0; i < Sb.size; i++)
+                    {
+                        SeaArray[Sb.yAxis - i, Sb.xAxis] = Cell.LiveBoat;
+                    }
 
-            //    }
+                }
                 
-            //}
-            //#endregion
+            }
+            #endregion
 
             //Sub  robs
             #region
@@ -446,16 +448,14 @@ namespace BattleShip
         }
         public int Xint()
         {
-            Random rnd = new Random();
-            int x = rnd.Next(0, 10);
+            int x = rand.Next(0, 10);
             
             return x;
         }
         public int Yint()
         {
             
-            Random random = new Random();
-            int y = random.Next(0, 10);
+            int y = rand.Next(0, 10);
             return  y;
         }
 
