@@ -21,13 +21,14 @@ namespace BattleShip
 
         public Random rand;
 
-        
+        // Constructor
         public BattleShip()
         {
             SeaArray = new Cell[10, 10];
             rand = new Random();
         }
 
+        // Runs the game at base level by calling original methods.
         public void Run()
         {
             //start the menu
@@ -42,6 +43,7 @@ namespace BattleShip
             // Start();
         }
 
+        // Menu interface
         public void Menu()
         {
             while (true)
@@ -109,6 +111,7 @@ namespace BattleShip
 
         }
 
+        // Parts of the board to actual symbols.
         static string CellToString(Cell c)
         {
             switch (c)
@@ -122,9 +125,10 @@ namespace BattleShip
             }
         }
 
-
+        // Parts of the board
         public enum Cell { Water, LiveBoat, HitBoat, SunkBoat, Missed };
 
+        // Labels and making board display?
         string BoardToString(Cell[,] board)
         {
             StringBuilder sb = new StringBuilder();
@@ -153,8 +157,6 @@ namespace BattleShip
 
         }
 
-
-
         //Makes the Sea board print to the screen
         public void PlayingBoard()
         {
@@ -163,7 +165,8 @@ namespace BattleShip
            
 
         }
-        //this methods job is to place the ships... problem is that we cant figure out how to use mcculloughs code to our advantage.
+
+        //this methods job is to place the ships.
         public void Placeships()
         {
             //All Ships
@@ -206,7 +209,7 @@ namespace BattleShip
             #region
             while (true)
             {
-                if (Sb.vertical)
+                if (!Sb.vertical)
                 {
                     if (Sb.xAxis + (Sb.size - 1) > 9)
                     {
@@ -229,7 +232,7 @@ namespace BattleShip
                     }
                 }
             }
-            if (Sb.vertical)
+            if (!Sb.vertical)
             {
                 //Checks to see if the space next
                 if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water )
@@ -271,13 +274,17 @@ namespace BattleShip
             }
             #endregion
 
-            //Sub  robs
+            //Sub  
             #region
             while (true)
             {
-                if (Sub.vertical)
+                if (!Sub.vertical)
                 {
                     if (Sub.xAxis + (Sub.size - 1) > 9)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else if (SeaArray[Sub.yAxis, Sub.xAxis] != Cell.Water)
                     {
                         Sub = new Sub(Yint(), Xint());
                     }
@@ -292,13 +299,17 @@ namespace BattleShip
                     {
                         Sub = new Sub(Yint(), Xint());
                     }
+                    else if (SeaArray[Sub.yAxis, Sub.xAxis] != Cell.Water)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
                     else
                     {
                         break;
                     }
                 }
             }
-            if (Sub.vertical)
+            if (!Sub.vertical)
             {
                 //Checks to see if the space next
                 if (SeaArray[Sub.yAxis, Sub.xAxis + (Sub.size - 1)] == Cell.Water && SeaArray[Sub.yAxis, Sub.xAxis + (Sub.size - 2)] == Cell.Water)
@@ -343,13 +354,17 @@ namespace BattleShip
 
             #endregion
 
-            //Destroyer  me 
+            //Destroyer  
             #region
             while (true)
             {
-                if (des.vertical)
+                if (!des.vertical)
                 {
                     if (des.xAxis + (des.size - 1) > 9)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else if (SeaArray[des.yAxis, des.xAxis] != Cell.Water)
                     {
                         des = new Destroyer(Yint(), Xint());
                     }
@@ -364,13 +379,17 @@ namespace BattleShip
                     {
                         des = new Destroyer(Yint(), Xint());
                     }
+                    else if (SeaArray[des.yAxis, des.xAxis] != Cell.Water)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
                     else
                     {
                         break;
                     }
                 }
             }
-            if (des.vertical)
+            if (!des.vertical)
             {
                 //Checks to see if the space next
                 if (SeaArray[des.yAxis, des.xAxis + (des.size - 1)] == Cell.Water && SeaArray[des.yAxis, des.xAxis + (des.size - 2)] == Cell.Water)
@@ -415,13 +434,17 @@ namespace BattleShip
             #endregion
 
 
-            //Carrier   rob
+            //Carrier   
             #region
             while (true)
             {
-                if (car.vertical)
+                if (!car.vertical)
                 {
                     if (car.xAxis + (car.size - 1) > 9)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (SeaArray[car.yAxis, car.xAxis] != Cell.Water)
                     {
                         car = new Carrier(Yint(), Xint());
                     }
@@ -436,13 +459,17 @@ namespace BattleShip
                     {
                         car = new Carrier(Yint(), Xint());
                     }
+                    else if (SeaArray[car.yAxis, car.xAxis] != Cell.Water)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
                     else
                     {
                         break;
                     }
                 }
             }
-            if (car.vertical)
+            if (!car.vertical)
             {
                 //Checks to see if the space next
                 if (SeaArray[car.yAxis, car.xAxis + (car.size - 1)] == Cell.Water && SeaArray[car.yAxis, car.xAxis + (car.size - 2)] == Cell.Water && SeaArray[car.yAxis, car.xAxis + (car.size - 3)] == Cell.Water && SeaArray[car.yAxis, car.xAxis + (car.size - 4)] == Cell.Water)
@@ -486,13 +513,17 @@ namespace BattleShip
             }
             #endregion
 
-            //Boat    me
+            //Boat    
             #region
             while (true)
             {
-                if (b.vertical)
+                if (!b.vertical)
                 {
                     if (b.xAxis + (b.size - 1) > 9)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else if (SeaArray[b.yAxis, b.xAxis] != Cell.Water)
                     {
                         b = new Boat(Yint(), Xint());
                     }
@@ -507,13 +538,17 @@ namespace BattleShip
                     {
                         b = new Boat(Yint(), Xint());
                     }
+                    else if (SeaArray[b.yAxis, b.xAxis] != Cell.Water)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
                     else
                     {
                         break;
                     }
                 }
             }
-            if (b.vertical)
+            if (!b.vertical)
             {
                 //Checks to see if the space next
                 if (SeaArray[b.yAxis, b.xAxis + (b.size - 1)] == Cell.Water && SeaArray[b.yAxis, b.xAxis + (b.size - 2)] == Cell.Water && SeaArray[b.yAxis, b.xAxis + (b.size - 3)] == Cell.Water)
@@ -630,6 +665,7 @@ namespace BattleShip
             }
         }
 
+        // Used for letter input conversion
         public int LetterToRow(char input)
         {
             return Char.ToUpper(input) - 'A';
@@ -640,18 +676,24 @@ namespace BattleShip
 
             }
         }
+
+        // Win messages etc...
         public void YouWin()
         {
             Clear();
             WriteLine("You Win!!! You took " + timesShot + " shots to win!.");
 
         }
+
+        // Randomly Generates number
         public int Xint()
         {
             int x = rand.Next(0, 10);
             
             return x;
         }
+
+        // Randomly generates number
         public int Yint()
         {
             
