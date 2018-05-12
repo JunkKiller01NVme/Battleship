@@ -18,7 +18,6 @@ namespace BattleShip
         public Destroyer des;
         public Carrier car;
         public Boat b;
-
         public Random rand;
 
         // Constructor
@@ -66,7 +65,6 @@ namespace BattleShip
 
                         if (ReadLine() == "y")
                         {
-
                             continue;
                         }
                         else
@@ -77,15 +75,8 @@ namespace BattleShip
                     else if (result == 2)
                     {
                         // New game
-
                         Placeships();
                         PlayingBoard();
-
-
-
-
-
-
                         break;
                     }
                     else if (result == 3)
@@ -288,6 +279,22 @@ namespace BattleShip
                     {
                         Sub = new Sub(Yint(), Xint());
                     }
+                    else if (Sub.xAxis + 2 > 9)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else if (Sub.xAxis - 2 < 0)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else if (Sub.yAxis + 2 > 9)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else if (Sub.yAxis - 2 < 0)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
                     else
                     {
                         break;
@@ -300,6 +307,22 @@ namespace BattleShip
                         Sub = new Sub(Yint(), Xint());
                     }
                     else if (SeaArray[Sub.yAxis, Sub.xAxis] != Cell.Water)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else if (Sub.xAxis + 2 > 9)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else if (Sub.xAxis - 2 < 0)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else if (Sub.yAxis + 2 > 9)
+                    {
+                        Sub = new Sub(Yint(), Xint());
+                    }
+                    else if (Sub.yAxis - 2 < 0)
                     {
                         Sub = new Sub(Yint(), Xint());
                     }
@@ -368,6 +391,22 @@ namespace BattleShip
                     {
                         des = new Destroyer(Yint(), Xint());
                     }
+                    else if (des.xAxis + 2 > 9)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else if (des.xAxis - 2 < 0)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else if (des.yAxis + 2 > 9)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else if (des.yAxis - 2 < 0)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
                     else
                     {
                         break;
@@ -380,6 +419,22 @@ namespace BattleShip
                         des = new Destroyer(Yint(), Xint());
                     }
                     else if (SeaArray[des.yAxis, des.xAxis] != Cell.Water)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else if (des.xAxis + 2 > 9)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else if (des.xAxis - 2 < 0)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else if (des.yAxis + 2 > 9)
+                    {
+                        des = new Destroyer(Yint(), Xint());
+                    }
+                    else if (des.yAxis - 2 < 0)
                     {
                         des = new Destroyer(Yint(), Xint());
                     }
@@ -433,7 +488,6 @@ namespace BattleShip
             }
             #endregion
 
-
             //Carrier   
             #region
             while (true)
@@ -445,6 +499,22 @@ namespace BattleShip
                         car = new Carrier(Yint(), Xint());
                     }
                     else if (SeaArray[car.yAxis, car.xAxis] != Cell.Water)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (car.xAxis + 4 > 9)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (car.xAxis - 4 < 0)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (car.yAxis + 4 > 9)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (car.yAxis - 4 < 0)
                     {
                         car = new Carrier(Yint(), Xint());
                     }
@@ -460,6 +530,22 @@ namespace BattleShip
                         car = new Carrier(Yint(), Xint());
                     }
                     else if (SeaArray[car.yAxis, car.xAxis] != Cell.Water)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (car.xAxis + 4 > 9)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (car.xAxis - 4 < 0)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (car.yAxis + 4 > 9)
+                    {
+                        car = new Carrier(Yint(), Xint());
+                    }
+                    else if (car.yAxis - 4 < 0)
                     {
                         car = new Carrier(Yint(), Xint());
                     }
@@ -527,6 +613,22 @@ namespace BattleShip
                     {
                         b = new Boat(Yint(), Xint());
                     }
+                    else if (b.xAxis + 3 > 9)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else if (b.xAxis - 3 < 0)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else if (b.yAxis + 3 > 9)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else if (b.yAxis - 3 < 0)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
                     else
                     {
                         break;
@@ -539,6 +641,22 @@ namespace BattleShip
                         b = new Boat(Yint(), Xint());
                     }
                     else if (SeaArray[b.yAxis, b.xAxis] != Cell.Water)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else if (b.xAxis + 3 > 9)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else if (b.xAxis - 3 < 0)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else if (b.yAxis + 3 > 9)
+                    {
+                        b = new Boat(Yint(), Xint());
+                    }
+                    else if (b.yAxis - 3 < 0)
                     {
                         b = new Boat(Yint(), Xint());
                     }
@@ -660,9 +778,11 @@ namespace BattleShip
                 }
                 else
                 {
+                    YouWin();
                     break;
                 }
             }
+            
         }
 
         // Used for letter input conversion
@@ -682,7 +802,7 @@ namespace BattleShip
         {
             Clear();
             WriteLine("You Win!!! You took " + timesShot + " shots to win!.");
-
+            Console.ReadKey();
         }
 
         // Randomly Generates number

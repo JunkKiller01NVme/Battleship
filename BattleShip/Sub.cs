@@ -12,14 +12,14 @@ namespace BattleShip
         public int xAxis;
         public int yAxis;
         public bool vertical;
-        
+        public Random random;
 
         public Sub(int x, int y)
         {
+            random = new Random();
             this.xAxis = x;
             this.yAxis = y;
 
-            Random random = new Random();
             int b = random.Next(0, 2);
 
             if (b == 0)
@@ -28,14 +28,8 @@ namespace BattleShip
             }
             else
             {
-
                 vertical = false;
-
             }
-
         }
-
-
-
     }
 }

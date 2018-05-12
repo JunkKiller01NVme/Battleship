@@ -18,20 +18,23 @@ namespace BattleShip
         static void Main(string[] args)
         {
            BattleShip b = new BattleShip();
+            while (true)
+            {
+                b.Run();
+            }
             
-            b.Run();
             
             //BattleShip.SeaArray[1, 2] = Cell.LiveBoat;
             
 
-            b.YouWin();
+            
 
             //Cell[,] SeaArray = new Cell[10, 10];
             //Console.WriteLine(BoardToString(SeaArray));
             //SeaArray[1, 2] = Cell.LiveBoat;
             
 
-            Console.WriteLine();
+            
             
             
 
@@ -41,7 +44,7 @@ namespace BattleShip
             // Console.WriteLine("Enter coordinates for shoots thing x first then y after you hit enter");
             // Console.ReadLine();
             // int shotx = int.Parse(Console.ReadLine());
-            Console.ReadKey();
+            
             // int shoty = int.Parse(Console.ReadLine());
             // if (shot = Cell.LiveBoat) {
 
