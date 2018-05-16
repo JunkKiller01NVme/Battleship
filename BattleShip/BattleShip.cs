@@ -727,10 +727,19 @@ namespace BattleShip
                     while (true)
                     {
                         WriteLine("First the numbers...");
+                        
                         if (int.TryParse(ReadLine(), out int xx))
                         {
-                            fireX = xx - 1;
-                            break;
+                            if (xx > 10)
+                            {
+                                WriteLine("That number was too high.");
+                                continue;
+                            }
+                            else
+                            { 
+                                fireX = xx - 1;
+                                break;
+                            }
                         }
                         else
                         {
@@ -742,8 +751,16 @@ namespace BattleShip
                         WriteLine("Now the letters...");
                         if (char.TryParse(ReadLine(), out char yy))
                         {
-                            fireY = LetterToRow(yy);
-                            break;
+                            if (char.ToLower(yy) > 'j')
+                            {
+                                WriteLine("That letter was past J");
+                                continue;
+                            }
+                            else
+                            {
+                                fireY = LetterToRow(yy);
+                                break;
+                            }
                         }
                         else
                         {
