@@ -718,7 +718,9 @@ namespace BattleShip
             while (true)
             {
                 PlayingBoard();
-                Write("Ok you are now ready to shoot at your opponent.");
+                WriteLine("Ok you are now ready to shoot at your opponent.");
+                WriteLine("@ = Miss");
+                WriteLine("* = Hit");
                 WriteLine();
                 int fireX = 0;
                 int fireY = 0;
