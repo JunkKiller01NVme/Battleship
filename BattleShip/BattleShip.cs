@@ -743,6 +743,7 @@ namespace BattleShip
                         }
                         else
                         {
+                            PlayingBoard();
                             WriteLine("Something didn't work, let's try that again.");
                         }
                     }
@@ -764,6 +765,7 @@ namespace BattleShip
                         }
                         else
                         {
+                            PlayingBoard();
                             WriteLine("Something didn't work, let's try that again.");
                         }
                     }
