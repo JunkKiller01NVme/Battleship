@@ -750,7 +750,13 @@ namespace BattleShip
                     while (true)
                     {
                         WriteLine("Now the letters...");
-                        if (char.TryParse(ReadLine(), out char yy))
+                        string letterInput = ReadLine();
+                        if (int.TryParse(letterInput, out int bleh))
+                        {
+                            PlayingBoard();
+                            WriteLine("That wasn't a letter, try again.");
+                        }
+                        else if (char.TryParse(letterInput, out char yy))
                         {
                             if (char.ToLower(yy) > 'j')
                             {
