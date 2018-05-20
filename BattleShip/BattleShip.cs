@@ -9,7 +9,6 @@ namespace BattleShip
 {
     class BattleShip
     {
-
         public string playerName = "";
         public int timesShot = 0;
         public Cell[,] SeaArray;

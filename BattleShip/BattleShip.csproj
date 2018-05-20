@@ -45,7 +45,6 @@
     <Compile Include="BattleShip.cs" />
     <Compile Include="Boat.cs" />
     <Compile Include="Carrier.cs" />
-    <Compile Include="Cordnates.cs" />
     <Compile Include="Destroyer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
