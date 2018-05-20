@@ -163,9 +163,13 @@ namespace BattleShip
         public void PlayingBoard()
         {
             Clear();
+            WriteLine("Enemy Board");
+            WriteLine();
             WriteLine(BoardToString(SeaArray));
-
-
+            WriteLine();
+            WriteLine("Player Board");
+            WriteLine();
+            WriteLine(BoardToString(PlayerArray));
         }
 
         //this methods job is to place the ships.
@@ -862,50 +866,595 @@ namespace BattleShip
         // Generates the players board
         public void PlayerBoard()
         {
-            bool cVert = false;
             WriteLine("Let's place your ships.");
-            WriteLine("Ships will be place from left to right, top to bottom.");
+            WriteLine("Ships will be placed from left to right, top to bottom.");
             WriteLine("");
-            WriteLine("We will start with your carrier.");
+            WriteLine("We will start with your Carrier.");
             PlayerCarrier();
+            WriteLine("Next we will place your Battleship.");
+            PlayerBoat();
+            WriteLine("Now we will partake in the action of placing your Submarine.");
+            PlayerSub();
+            WriteLine("Now we shall place your Destroyer.");
+            PlayerDestroyer();
+            WriteLine("Finally the SpeedBoat");
+            PlayerSpeedBoat();
+            PlayingBoard();
         }
 
         // Generates the player's carrier
         public void PlayerCarrier()
         {
             bool vertical = false;
+            int number = 0;
+            int letter = 0;
             while (true)
             {
-                WriteLine("Will your ship be place horizontal or vertical?");
-                string input = ReadLine();
-                if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                while (true)
                 {
-                    vertical = false;
-                    break;
+                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    string input = ReadLine();
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    {
+                        vertical = false;
+                        break;
+                    }
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    {
+                        vertical = true;
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("Something wasn't quite right, try again.");
+                        continue;
+                    }
                 }
-                else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                while (true)
                 {
-                    vertical = true;
-                    break;
+                    WriteLine("What number should the left most piece of your carrier be at?");
+                    string input = ReadLine();
+                    if (int.TryParse(input, out int numb))
+                    {
+                        if (numb - 1 <= 9 && numb - 1 >= 0)
+                        {
+                            number = numb;
+                            break;
+                        }
+                        else
+                        {
+                            WriteLine("That number was beyond the existing numbers on the array.");
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something went wrong, let's try that again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What letter should the upper most piece of your carrier be located at?");
+                    string input = ReadLine();
+                    if (int.TryParse(input, out int bleh))
+                    {
+                        WriteLine("That wasn't a letter, try again.");
+                    }
+                    else if (char.TryParse(input, out char lett))
+                    {
+                        if (char.ToLower(lett) > 'j')
+                        {
+                            WriteLine("That was past the letter 'J'.");
+                            continue;
+                        }
+                        else
+                        {
+                            letter = LetterToRow(lett);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something didn't work, let's try again.");
+                        continue;
+                    }
+                }
+                if (vertical)
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water && PlayerArray[letter + 2, number] == Cell.Water && PlayerArray[letter + 3, number] == Cell.Water && PlayerArray[letter + 4, number] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
                 }
                 else
                 {
-                    WriteLine("Something wasn't quite right, try again.");
-                    continue;
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water && PlayerArray[letter, number + 2] == Cell.Water && PlayerArray[letter, number + 3] == Cell.Water && PlayerArray[letter, number + 4] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
                 }
-            }
-            while (true)
-            {
-                WriteLine("What number should the left most piece of your carrier be at?");
-                string input = ReadLine();
             }
         }
 
-        //static int GetValueFromArray(int[] array, int index) { }
+        // Generates the player's battleship
+        public void PlayerBoat()
+        {
+            bool vertical = false;
+            int number = 0;
+            int letter = 0;
+            while (true)
+            {
+                while (true)
+                {
+                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    string input = ReadLine();
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    {
+                        vertical = false;
+                        break;
+                    }
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    {
+                        vertical = true;
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("Something wasn't quite right, try again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What number should the left most piece of your battleship be at?");
+                    string input = ReadLine();
+                    if (int.TryParse(input, out int numb))
+                    {
+                        if (numb - 1 <= 9 && numb - 1 >= 0)
+                        {
+                            number = numb;
+                            break;
+                        }
+                        else
+                        {
+                            WriteLine("That number was beyond the existing numbers on the array.");
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something went wrong, let's try that again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What letter should the upper most piece of your battleship be located at?");
+                    string input = ReadLine();
+                    if (char.TryParse(input, out char lett))
+                    {
+                        if (int.TryParse(input, out int bleh))
+                        {
+                            WriteLine("That wasn't a letter, try again.");
+                        }
+                        if (char.ToLower(lett) > 'j')
+                        {
+                            WriteLine("That was past the letter 'j'.");
+                            continue;
+                        }
+                        else
+                        {
+                            letter = LetterToRow(lett);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something didn't work, let's try again.");
+                        continue;
+                    }
+                }
+                if (vertical)
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water && PlayerArray[letter + 2, number] == Cell.Water && PlayerArray[letter + 3, number] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water && PlayerArray[letter, number + 2] == Cell.Water && PlayerArray[letter, number + 3] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
+                }
+            }
+        }
+
+        // Generates the player's submarine
+        public void PlayerSub()
+        {
+            bool vertical = false;
+            int number = 0;
+            int letter = 0;
+            while (true)
+            {
+                while (true)
+                {
+                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    string input = ReadLine();
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    {
+                        vertical = false;
+                        break;
+                    }
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    {
+                        vertical = true;
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("Something wasn't quite right, try again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What number should the left most piece of your Submarine be at?");
+                    string input = ReadLine();
+                    if (int.TryParse(input, out int numb))
+                    {
+                        if (numb - 1 <= 9 && numb - 1 >= 0)
+                        {
+                            number = numb;
+                            break;
+                        }
+                        else
+                        {
+                            WriteLine("That number was beyond the existing numbers on the array.");
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something went wrong, let's try that again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What letter should the upper most piece of your Submarine be located at?");
+                    string input = ReadLine();
+                    if (char.TryParse(input, out char lett))
+                    {
+                        if (int.TryParse(input, out int bleh))
+                        {
+                            WriteLine("That wasn't a letter, try again.");
+                        }
+                        if (char.ToLower(lett) > 'j')
+                        {
+                            WriteLine("That was past the letter 'j'.");
+                            continue;
+                        }
+                        else
+                        {
+                            letter = LetterToRow(lett);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something didn't work, let's try again.");
+                        continue;
+                    }
+                }
+                if (vertical)
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water && PlayerArray[letter + 2, number] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water && PlayerArray[letter, number + 2] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
+                }
+            }
+        }
+
+        // Generates the player's destroyer
+        public void PlayerDestroyer()
+        {
+            bool vertical = false;
+            int number = 0;
+            int letter = 0;
+            while (true)
+            {
+                while (true)
+                {
+                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    string input = ReadLine();
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    {
+                        vertical = false;
+                        break;
+                    }
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    {
+                        vertical = true;
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("Something wasn't quite right, try again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What number should the left most piece of your Destroyer be at?");
+                    string input = ReadLine();
+                    if (int.TryParse(input, out int numb))
+                    {
+                        if (numb - 1 <= 9 && numb - 1 >= 0)
+                        {
+                            number = numb;
+                            break;
+                        }
+                        else
+                        {
+                            WriteLine("That number was beyond the existing numbers on the array.");
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something went wrong, let's try that again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What letter should the upper most piece of your Destroyer be located at?");
+                    string input = ReadLine();
+                    if (char.TryParse(input, out char lett))
+                    {
+                        if (int.TryParse(input, out int bleh))
+                        {
+                            WriteLine("That wasn't a letter, try again.");
+                        }
+                        if (char.ToLower(lett) > 'j')
+                        {
+                            WriteLine("That was past the letter 'j'.");
+                            continue;
+                        }
+                        else
+                        {
+                            letter = LetterToRow(lett);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something didn't work, let's try again.");
+                        continue;
+                    }
+                }
+                if (vertical)
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water && PlayerArray[letter + 2, number] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water && PlayerArray[letter, number + 2] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
+                }
+            }
+        }
+
+        // Generates the player's speedboat
+        public void PlayerSpeedBoat()
+        {
+            bool vertical = false;
+            int number = 0;
+            int letter = 0;
+            while (true)
+            {
+                while (true)
+                {
+                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    string input = ReadLine();
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    {
+                        vertical = false;
+                        break;
+                    }
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    {
+                        vertical = true;
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("Something wasn't quite right, try again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What number should the left most piece of your Speedboat be at?");
+                    string input = ReadLine();
+                    if (int.TryParse(input, out int numb))
+                    {
+                        if (numb - 1 <= 9 && numb - 1 >= 0)
+                        {
+                            number = numb;
+                            break;
+                        }
+                        else
+                        {
+                            WriteLine("That number was beyond the existing numbers on the array.");
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something went wrong, let's try that again.");
+                        continue;
+                    }
+                }
+                while (true)
+                {
+                    WriteLine("What letter should the upper most piece of your speedboat be located at?");
+                    string input = ReadLine();
+                    if (char.TryParse(input, out char lett))
+                    {
+                        if (int.TryParse(input, out int bleh))
+                        {
+                            WriteLine("That wasn't a letter, try again.");
+                        }
+                        if (char.ToLower(lett) > 'j')
+                        {
+                            WriteLine("That was past the letter 'j'.");
+                            continue;
+                        }
+                        else
+                        {
+                            letter = LetterToRow(lett);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        WriteLine("Something didn't work, let's try again.");
+                        continue;
+                    }
+                }
+                if (vertical)
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("The ship didn't fit there. Let's start over.");
+                        WriteLine();
+                        continue;
+                    }
+                }
+            }
+        }
     }
-
-
+    //static int GetValueFromArray(int[] array, int index) { }
 }
+
 
 
 
