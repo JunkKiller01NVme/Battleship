@@ -87,6 +87,7 @@ namespace BattleShip
                     else if (result == 2)
                     {
                         // New game
+                        PlayerBoard();
                         Placeships();
                         PlayingBoard();
                         break;
@@ -110,8 +111,6 @@ namespace BattleShip
                     }
                 }
             }
-
-
         }
 
         // Parts of the board to actual symbols.
@@ -860,9 +859,46 @@ namespace BattleShip
             return y;
         }
 
+        // Generates the players board
         public void PlayerBoard()
         {
+            bool cVert = false;
+            WriteLine("Let's place your ships.");
+            WriteLine("Ships will be place from left to right, top to bottom.");
+            WriteLine("");
+            WriteLine("We will start with your carrier.");
+            PlayerCarrier();
+        }
 
+        // Generates the player's carrier
+        public void PlayerCarrier()
+        {
+            bool vertical = false;
+            while (true)
+            {
+                WriteLine("Will your ship be place horizontal or vertical?");
+                string input = ReadLine();
+                if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                {
+                    vertical = false;
+                    break;
+                }
+                else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                {
+                    vertical = true;
+                    break;
+                }
+                else
+                {
+                    WriteLine("Something wasn't quite right, try again.");
+                    continue;
+                }
+            }
+            while (true)
+            {
+                WriteLine("What number should the left most piece of your carrier be at?");
+                string input = ReadLine();
+            }
         }
 
         //static int GetValueFromArray(int[] array, int index) { }
