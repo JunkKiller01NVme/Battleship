@@ -12,6 +12,7 @@ namespace BattleShip
         public string playerName = "";
         public int timesShot = 0;
         public Cell[,] SeaArray;
+        public Cell[,] PlayerArray;
         public SpeedBoat Sb;
         public Sub Sub;
         public Destroyer des;
@@ -22,6 +23,7 @@ namespace BattleShip
         // Constructor
         public BattleShip()
         {
+            PlayerArray = new Cell[10, 10];
             SeaArray = new Cell[10, 10];
             rand = new Random();
         }
@@ -59,16 +61,27 @@ namespace BattleShip
                     if (result == 1)
                     {
                         // Instructions
-                        Write("To shoot. enter the 'X' value first, hit enter; then enter the 'Y' value.");
-                        Write("Back to the menu? (y/n)");
-
-                        if (ReadLine() == "y")
+                        while (true)
                         {
-                            continue;
-                        }
-                        else
-                        {
-                            break;
+                            WriteLine("To shoot. enter the number first, hit enter; then enter the letter that you would like to shoot at.");
+                            WriteLine("Would you like to look at what the different symbols mean? (y/n)");
+                            string input = ReadLine();
+                            if (input == "y" || input == "Y")
+                            {
+                                WriteLine("Empty Water/A live boat (You never know): _");
+                                WriteLine("Hit Boat: *");
+                                WriteLine("A missed shot: @");
+                            }
+                            WriteLine("Would you like to see it again? (y/n)");
+                            string input2 = ReadLine();
+                            if (input2 == "y" || input2 == "Y")
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
                     else if (result == 2)
@@ -152,7 +165,7 @@ namespace BattleShip
         {
             Clear();
             WriteLine(BoardToString(SeaArray));
-           
+
 
         }
 
@@ -161,8 +174,8 @@ namespace BattleShip
         {
             //All Ships
             #region
-            
-            SpeedBoat speedBoat = new SpeedBoat(Yint(),Xint());
+
+            SpeedBoat speedBoat = new SpeedBoat(Yint(), Xint());
             Sb = speedBoat;
 
             Sub sub = new Sub(Yint(), Xint());
@@ -183,13 +196,13 @@ namespace BattleShip
             // WriteLine(String.Join("\n", Enumerable.Range(0, SeaArray.GetLength(0)).Select(i => String.Join(", ", Enumerable.Range(0, SeaArray.GetLength(1)).Select(j => SeaArray[i, j]))))); //#### NO TOUCH #### E V E R ####
             PlayingBoard();
             PlaceShipSegments();
-            
+
         }
 
         //This method will place the rest of the ship(s)
         public void PlaceShipSegments()
         {
-          
+
             //The up most left piece of ship is the main piece.
             //Going off of the main peice I need to figure out if it has space to be placed horizontaly of verticly... If not randomize the main peice again
             //Or... Whenever the main peice is placed it determines if the rest of the ship can be placed. if not (again) it will try to flip it, or turn it. AAnnd if that doesnt work itll replace it.
@@ -212,7 +225,7 @@ namespace BattleShip
                 }
                 else
                 {
-                    if (Sb.yAxis + (Sb.size -1) > 9)
+                    if (Sb.yAxis + (Sb.size - 1) > 9)
                     {
                         Sb = new SpeedBoat(Yint(), Xint());
                     }
@@ -225,7 +238,7 @@ namespace BattleShip
             if (!Sb.vertical)
             {
                 //Checks to see if the space next
-                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water )
+                if (SeaArray[Sb.yAxis, Sb.xAxis + (Sb.size - 1)] == Cell.Water)
                 {
 
                     for (int i = 0; i <= Sb.size - 1; i++)
@@ -250,7 +263,7 @@ namespace BattleShip
                     for (int i = 0; i < Sb.size; i++)
                     {
                         SeaArray[Sb.yAxis + i, Sb.xAxis] = Cell.LiveBoat;
-                   }
+                    }
                 }
                 else
                 {
@@ -260,7 +273,7 @@ namespace BattleShip
                     }
 
                 }
-                
+
             }
             #endregion
 
@@ -348,15 +361,15 @@ namespace BattleShip
                 {
                     for (int i = 0; i < Sub.size; i++)
                     {
-                        
-                            SeaArray[Sub.yAxis, Sub.xAxis - i] = Cell.LiveBoat;
-                        
+
+                        SeaArray[Sub.yAxis, Sub.xAxis - i] = Cell.LiveBoat;
+
                     }
                 }
             }
             else
             {
-                if (SeaArray[Sub.yAxis + (Sub.size - 1), Sub.xAxis] == Cell.Water && SeaArray[Sub.yAxis + (Sub.size - 2), Sub.xAxis ] == Cell.Water)
+                if (SeaArray[Sub.yAxis + (Sub.size - 1), Sub.xAxis] == Cell.Water && SeaArray[Sub.yAxis + (Sub.size - 2), Sub.xAxis] == Cell.Water)
                 {
                     for (int i = 0; i < Sub.size; i++)
                     {
@@ -728,7 +741,7 @@ namespace BattleShip
                     while (true)
                     {
                         WriteLine("First the numbers...");
-                        
+
                         if (int.TryParse(ReadLine(), out int xx))
                         {
                             if (xx > 10)
@@ -737,7 +750,7 @@ namespace BattleShip
                                 continue;
                             }
                             else
-                            { 
+                            {
                                 fireX = xx - 1;
                                 break;
                             }
@@ -797,7 +810,7 @@ namespace BattleShip
                     WriteLine("You have already fired there, try another spot.");
                     Console.ReadKey();
                 }
-                
+
                 if (SeaArray.Cast<Cell>().Contains(Cell.LiveBoat))
                 {
                     continue;
@@ -808,7 +821,7 @@ namespace BattleShip
                     break;
                 }
             }
-            
+
         }
 
         // Used for letter input conversion
@@ -835,16 +848,21 @@ namespace BattleShip
         public int Xint()
         {
             int x = rand.Next(0, 10);
-            
+
             return x;
         }
 
         // Randomly generates number
         public int Yint()
         {
-            
+
             int y = rand.Next(0, 10);
-            return  y;
+            return y;
+        }
+
+        public void PlayerBoard()
+        {
+
         }
 
         //static int GetValueFromArray(int[] array, int index) { }
@@ -853,8 +871,8 @@ namespace BattleShip
 
 }
 
-    
 
 
-   
+
+
 
