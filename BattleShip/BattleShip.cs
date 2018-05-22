@@ -921,6 +921,24 @@ namespace BattleShip
                     string input = ReadLine();
                     if (int.TryParse(input, out int numb))
                     {
+                        if (!vertical)
+                        {
+                            if (numb - 1 + 4 > 9)
+                            {
+                                WriteLine("That would be outside of the board. Try something else");
+                                continue;
+                            }
+                            else if (numb - 1 <= 9 && numb - 1 >= 0)
+                            {
+                                number = numb - 1;
+                                break;
+                            }
+                            else
+                            {
+                                WriteLine("Something else just simply didn't work. Let's give it another go.");
+                                continue;
+                            }
+                        }
                         if (numb - 1 <= 9 && numb - 1 >= 0)
                         {
                             number = numb - 1;
@@ -930,7 +948,9 @@ namespace BattleShip
                         {
                             WriteLine("That number was beyond the existing numbers on the array.");
                         }
+
                     }
+
                     else
                     {
                         WriteLine("Something went wrong, let's try that again.");
@@ -951,6 +971,19 @@ namespace BattleShip
                         {
                             WriteLine("That was past the letter 'J'.");
                             continue;
+                        }
+                        else if (vertical)
+                        {
+                            if (char.ToLower(lett) + 4 > 'j')
+                            {
+                                WriteLine("That would have been past the letter 'J'. Try something else.");
+                                continue;
+                            }
+                            else
+                            {
+                                letter = LetterToRow(lett);
+                                break;
+                            }
                         }
                         else
                         {
