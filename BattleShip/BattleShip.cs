@@ -871,12 +871,16 @@ namespace BattleShip
             WriteLine("");
             WriteLine("We will start with your Carrier.");
             PlayerCarrier();
+            PlayingBoard();
             WriteLine("Next we will place your Battleship.");
             PlayerBoat();
+            PlayingBoard();
             WriteLine("Now we will partake in the action of placing your Submarine.");
             PlayerSub();
+            PlayingBoard();
             WriteLine("Now we shall place your Destroyer.");
             PlayerDestroyer();
+            PlayingBoard();
             WriteLine("Finally the SpeedBoat");
             PlayerSpeedBoat();
             PlayingBoard();
@@ -918,7 +922,7 @@ namespace BattleShip
                     {
                         if (numb - 1 <= 9 && numb - 1 >= 0)
                         {
-                            number = numb;
+                            number = numb - 1;
                             break;
                         }
                         else
@@ -1032,7 +1036,7 @@ namespace BattleShip
                     {
                         if (numb - 1 <= 9 && numb - 1 >= 0)
                         {
-                            number = numb;
+                            number = numb - 1;
                             break;
                         }
                         else
@@ -1146,7 +1150,7 @@ namespace BattleShip
                     {
                         if (numb - 1 <= 9 && numb - 1 >= 0)
                         {
-                            number = numb;
+                            number = numb - 1;
                             break;
                         }
                         else
@@ -1260,7 +1264,7 @@ namespace BattleShip
                     {
                         if (numb - 1 <= 9 && numb - 1 >= 0)
                         {
-                            number = numb;
+                            number = numb - 1;
                             break;
                         }
                         else
@@ -1374,7 +1378,7 @@ namespace BattleShip
                     {
                         if (numb - 1 <= 9 && numb - 1 >= 0)
                         {
-                            number = numb;
+                            number = numb - 1;
                             break;
                         }
                         else
