@@ -869,6 +869,7 @@ namespace BattleShip
             WriteLine("Let's place your ships.");
             WriteLine("Ships will be placed from left to right, top to bottom.");
             WriteLine("");
+            PlayingBoard();
             WriteLine("We will start with your Carrier.");
             PlayerCarrier();
             PlayingBoard();
