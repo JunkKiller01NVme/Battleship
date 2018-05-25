@@ -897,14 +897,14 @@ namespace BattleShip
             {
                 while (true)
                 {
-                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    WriteLine("Will your ship be placed horizontal or vertical? (H or V if you prefer)");
                     string input = ReadLine();
-                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL" || input == "h" || input == "H")
                     {
                         vertical = false;
                         break;
                     }
-                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL" || input == "v" || input == "V")
                     {
                         vertical = true;
                         break;
@@ -1044,14 +1044,14 @@ namespace BattleShip
             {
                 while (true)
                 {
-                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    WriteLine("Will your ship be placed horizontal or vertical? (H or V if you prefer)");
                     string input = ReadLine();
-                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL" || input == "H" || input == "h")
                     {
                         vertical = false;
                         break;
                     }
-                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL" || input == "V" || input == "v")
                     {
                         vertical = true;
                         break;
@@ -1158,14 +1158,14 @@ namespace BattleShip
             {
                 while (true)
                 {
-                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    WriteLine("Will your ship be placed horizontal or vertical? (H or V if you prefer)");
                     string input = ReadLine();
-                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL" || input == "h" || input == "H")
                     {
                         vertical = false;
                         break;
                     }
-                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL" || input == "v" || input == "V")
                     {
                         vertical = true;
                         break;
@@ -1272,14 +1272,14 @@ namespace BattleShip
             {
                 while (true)
                 {
-                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    WriteLine("Will your ship be placed horizontal or vertical? (H or V if you prefer)");
                     string input = ReadLine();
-                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL" || input == "h" || input == "H")
                     {
                         vertical = false;
                         break;
                     }
-                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL" || input == "v" || input == "V")
                     {
                         vertical = true;
                         break;
@@ -1386,14 +1386,14 @@ namespace BattleShip
             {
                 while (true)
                 {
-                    WriteLine("Will your ship be placed horizontal or vertical?");
+                    WriteLine("Will your ship be placed horizontal or vertical? (H or V if you prefer)");
                     string input = ReadLine();
-                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL")
+                    if (input == "horizontal" || input == "Horizontal" || input == "HORIZONTAL" || input == "h" || input == "H")
                     {
                         vertical = false;
                         break;
                     }
-                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL")
+                    else if (input == "vertical" || input == "Vertical" || input == "VERTICAL" || input == "v" || input == "V")
                     {
                         vertical = true;
                         break;
