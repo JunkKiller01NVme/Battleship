@@ -20,6 +20,7 @@ namespace BattleShip
         public Boat b;
         public Random rand;
 
+
         // Constructor
         public BattleShip()
         {
@@ -813,7 +814,15 @@ namespace BattleShip
                     WriteLine("You have already fired there, try another spot.");
                     Console.ReadKey();
                 }
-
+                Ai();
+                if (PlayerArray.Cast<Cell>().Contains(Cell.LiveBoat))
+                {
+                }
+                else
+                {
+                    YouLose();
+                    break;
+                }
                 if (SeaArray.Cast<Cell>().Contains(Cell.LiveBoat))
                 {
                     continue;
@@ -823,6 +832,7 @@ namespace BattleShip
                     YouWin();
                     break;
                 }
+                
             }
 
         }
@@ -844,6 +854,14 @@ namespace BattleShip
         {
             Clear();
             WriteLine("You Win!!! You took " + timesShot + " shots to win!.");
+            Console.ReadKey();
+        }
+
+        // Lose message
+        public void YouLose()
+        {
+            Clear();
+            WriteLine("You L O S E ! ! ! You fired " + timesShot + "shots.");
             Console.ReadKey();
         }
 
@@ -1485,6 +1503,33 @@ namespace BattleShip
                         WriteLine("The ship didn't fit there. Let's start over.");
                         WriteLine();
                         continue;
+                    }
+                }
+            }
+        }
+
+        // Fires at player
+        public void Ai()
+        {
+            while (true)
+            {
+                int x = Xint();
+                int y = Yint();
+                if (PlayerArray[y, x] == Cell.HitBoat || PlayerArray[y, x] == Cell.Missed)
+                {
+                    continue;
+                }
+                else
+                {
+                    if (PlayerArray[y,x] == Cell.LiveBoat)
+                    {
+                        PlayerArray[y, x] = Cell.HitBoat;
+                        break;
+                    }
+                    else
+                    {
+                        PlayerArray[y, x] = Cell.Missed;
+                        break;
                     }
                 }
             }
