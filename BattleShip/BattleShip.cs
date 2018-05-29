@@ -54,7 +54,6 @@ namespace BattleShip
                 WriteLine("Enter 1 to see the instructions.");
                 WriteLine("Enter 2 to start a new game.");
                 WriteLine("Enter 3 to quit.");
-                WriteLine("Enter 4 to enter debug mode.");
                 string response = ReadLine();
 
                 if (int.TryParse(response, out int result))
@@ -98,14 +97,9 @@ namespace BattleShip
                         // Terminate program
                         Environment.Exit(0);
                     }
-                    else if (result == 4)
-                    {
-                        // debugging mode
-                        PlayingBoard();
-                        break;
-                    }
                     else
                     {
+                        // Prompt player for another response
                         Clear();
                         WriteLine("That was not a valid response, try again.");
                         WriteLine();
@@ -120,16 +114,17 @@ namespace BattleShip
             switch (c)
             {
                 case Cell.Water: return "_";
-                case Cell.LiveBoat: return "O";
+                case Cell.LiveBoat: return "_";
                 case Cell.HitBoat: return "*";
                 case Cell.SunkBoat: return "X";
                 case Cell.Missed: return "@";
+                case Cell.PlayerBoat: return "O";
                 default: return "?";
             }
         }
 
         // Parts of the board
-        public enum Cell { Water, LiveBoat, HitBoat, SunkBoat, Missed };
+        public enum Cell { Water, LiveBoat, HitBoat, SunkBoat, Missed, PlayerBoat };
 
         // Labels and making board display?
         string BoardToString(Cell[,] board)
@@ -1021,7 +1016,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                            PlayerArray[letter + i, number] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1038,7 +1033,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                            PlayerArray[letter, number + i] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1135,7 +1130,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 4; i++)
                         {
-                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                            PlayerArray[letter + i, number] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1152,7 +1147,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 4; i++)
                         {
-                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                            PlayerArray[letter, number + i] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1249,7 +1244,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 3; i++)
                         {
-                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                            PlayerArray[letter + i, number] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1266,7 +1261,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 3; i++)
                         {
-                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                            PlayerArray[letter, number + i] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1363,7 +1358,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 3; i++)
                         {
-                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                            PlayerArray[letter + i, number] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1380,7 +1375,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 3; i++)
                         {
-                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                            PlayerArray[letter, number + i] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1477,7 +1472,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 2; i++)
                         {
-                            PlayerArray[letter + i, number] = Cell.LiveBoat;
+                            PlayerArray[letter + i, number] = Cell.PlayerBoat;
                         }
                         break;
                     }
@@ -1494,7 +1489,7 @@ namespace BattleShip
                     {
                         for (int i = 0; i < 2; i++)
                         {
-                            PlayerArray[letter, number + i] = Cell.LiveBoat;
+                            PlayerArray[letter, number + i] = Cell.PlayerBoat;
                         }
                         break;
                     }
