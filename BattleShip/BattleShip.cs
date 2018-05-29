@@ -1133,7 +1133,7 @@ namespace BattleShip
                 {
                     if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water && PlayerArray[letter + 2, number] == Cell.Water && PlayerArray[letter + 3, number] == Cell.Water)
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             PlayerArray[letter + i, number] = Cell.LiveBoat;
                         }
@@ -1150,7 +1150,7 @@ namespace BattleShip
                 {
                     if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water && PlayerArray[letter, number + 2] == Cell.Water && PlayerArray[letter, number + 3] == Cell.Water)
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             PlayerArray[letter, number + i] = Cell.LiveBoat;
                         }
@@ -1247,7 +1247,7 @@ namespace BattleShip
                 {
                     if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water && PlayerArray[letter + 2, number] == Cell.Water)
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             PlayerArray[letter + i, number] = Cell.LiveBoat;
                         }
@@ -1264,7 +1264,7 @@ namespace BattleShip
                 {
                     if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water && PlayerArray[letter, number + 2] == Cell.Water)
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             PlayerArray[letter, number + i] = Cell.LiveBoat;
                         }
@@ -1361,7 +1361,7 @@ namespace BattleShip
                 {
                     if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water && PlayerArray[letter + 2, number] == Cell.Water)
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             PlayerArray[letter + i, number] = Cell.LiveBoat;
                         }
@@ -1378,7 +1378,7 @@ namespace BattleShip
                 {
                     if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water && PlayerArray[letter, number + 2] == Cell.Water)
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             PlayerArray[letter, number + i] = Cell.LiveBoat;
                         }
@@ -1475,7 +1475,7 @@ namespace BattleShip
                 {
                     if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter + 1, number] == Cell.Water)
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 2; i++)
                         {
                             PlayerArray[letter + i, number] = Cell.LiveBoat;
                         }
@@ -1492,7 +1492,7 @@ namespace BattleShip
                 {
                     if (PlayerArray[letter, number] == Cell.Water && PlayerArray[letter, number + 1] == Cell.Water)
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 2; i++)
                         {
                             PlayerArray[letter, number + i] = Cell.LiveBoat;
                         }
